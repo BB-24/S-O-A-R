@@ -1,0 +1,27 @@
+# Malware Analysis Automation Pipeline - Production Requirements
+
+# Core Libraries
+requests>=2.28.0          # HTTP library for API calls  
+python-dotenv>=0.20.0     # Environment variable management
+
+# Data Processing & Schemas
+dataclasses-json>=0.5.0   # JSON serialization for dataclasses
+
+# Report Generation
+Jinja2>=3.1.0             # Template engine for HTML reports
+MarkupSafe>=2.1.0         # Markup escaping
+
+# IOC Extraction
+ioc-finder>=0.3.0         # IOC pattern extraction
+
+# Optional: Security & Code Quality (Development)
+# pytest>=7.2.0             # Unit testing
+# black>=22.0.0             # Code formatter
+# flake8>=4.0.0             # Linter
+# mypy>=0.990               # Type checking
+
+# Optional: Enhanced Logging  
+# loguru>=0.6.0             # Better logging
+
+# Optional: MITRE ATT&CK
+# attackcti>=0.3.0          # MITRE ATT&CK framework

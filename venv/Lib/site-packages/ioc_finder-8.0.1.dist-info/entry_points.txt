@@ -1,0 +1,2 @@
+[console_scripts]
+ioc-finder = ioc_finder.ioc_finder:cli_find_iocs

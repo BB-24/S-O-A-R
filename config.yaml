@@ -1,0 +1,64 @@
+# Malware Analysis Pipeline Configuration
+# Optional: Can be used instead of .env for some settings
+
+# Sandbox API Configuration
+sandboxes:
+  hybrid_analysis:
+    enabled: true
+    timeout: 30
+    retries: 3
+    retry_delay: 5
+  
+  virustotal:
+    enabled: true
+    timeout: 30
+  
+  triage:
+    enabled: false  # Set to true when API key is available
+    timeout: 30
+
+# Analysis Settings
+analysis:
+  max_parallel_submissions: 3
+  polling_interval: 10  # seconds
+  max_wait_time: 600    # seconds (10 minutes)
+  
+# IOC Extraction
+ioc_extraction:
+  enabled: true
+  min_confidence: 0.5
+  include_file_paths: true
+  include_registry: true
+
+# Reporting
+reporting:
+  formats:
+    - html
+    - json
+  include_raw_responses: false
+  html_theme: bootstrap5
+  
+# Risk Scoring
+risk_scoring:
+  enabled: true
+  # Weights for different factors
+  network_activity_weight: 0.3
+  process_behavior_weight: 0.3
+  detections_weight: 0.4
+  
+# MITRE ATT&CK Mapping
+mitre:
+  enabled: true
+  min_confidence: 0.6
+
+# Logging
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  file: analysis.log
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+  
+# Output
+output:
+  directory: artifacts
+  create_per_hash_directory: true
+  compress_reports: false

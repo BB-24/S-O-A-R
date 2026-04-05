@@ -1,0 +1,72 @@
+{
+  "summary": {
+    "file_name": "fcm4f.exe",
+    "hashes": {
+      "md5": "b044eacac4f7fed71178fc705bea208b",
+      "sha1": "718260f314c1de9225097bf462406b93b903845c",
+      "sha256": "7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262"
+    },
+    "consensus_verdict": "malicious",
+    "threat_level": "critical",
+    "risk_score": 90.0,
+    "sources_count": 1,
+    "ioc_count": 0,
+    "network_activity_count": 0,
+    "process_count": 0,
+    "mitre_techniques_count": 0
+  },
+  "file_metadata": {
+    "name": "fcm4f.exe",
+    "hashes": {
+      "md5": "b044eacac4f7fed71178fc705bea208b",
+      "sha1": "718260f314c1de9225097bf462406b93b903845c",
+      "sha256": "7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262"
+    },
+    "primary_hash": "7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262"
+  },
+  "verdict_analysis": {
+    "consensus_verdict": "malicious",
+    "verdicts_by_source": {
+      "virustotal": "malicious"
+    },
+    "detections_by_source": {
+      "virustotal": [
+        "Bkav: W32.AIDetectMalware",
+        "Cynet: Malicious (score: 100)",
+        "Cylance: Unsafe",
+        "Sangfor: Trojan.Win32.Save.a",
+        "Elastic: malicious (high confidence)",
+        "Sophos: Generic ML PUA (PUA)",
+        "F-Secure: Trojan.TR/Spy.Gen",
+        "SentinelOne: Static AI - Suspicious PE",
+        "Jiangmin: Trojan.Generic.hspqh",
+        "Avira: TR/Spy.Gen",
+        "VBA32: Trojan.Wacatac",
+        "Malwarebytes: Trojan.ReverseShell",
+        "MaxSecure: Trojan.Malware.300983.susgen"
+      ]
+    }
+  },
+  "risk_assessment": {
+    "overall_score": 90.0,
+    "threat_level": "critical",
+    "confidence": 0.17105263157894737,
+    "reasoning": [
+      "Merged 1 reports",
+      "Average risk score: 90.0"
+    ],
+    "mitigations": []
+  },
+  "indicators_of_compromise": [],
+  "network_activity": [],
+  "process_execution": [],
+  "file_operations": [],
+  "mitre_attack_techniques": [],
+  "metadata": {
+    "merge_timestamp": "2026-04-05T16:31:01.507138",
+    "sources_count": 1,
+    "generators": [
+      "virustotal"
+    ]
+  }
+}

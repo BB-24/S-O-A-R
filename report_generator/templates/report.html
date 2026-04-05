@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Malware Report</title>
+</head>
+<body>
+
+<h1>Malware Analysis Report</h1>
+
+<h2>File Hash</h2>
+<p>{{ data.hash }}</p>
+
+<h2>IOCs</h2>
+
+<h3>IPs</h3>
+<ul>
+{% for ip in data.iocs.ips %}
+<li>{{ ip }}</li>
+{% endfor %}
+</ul>
+
+<h3>Domains</h3>
+<ul>
+{% for d in data.iocs.domains %}
+<li>{{ d }}</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+2026-04-05 03:12:41,836 [ERROR] __main__: Fatal error: HybridAnalysisClient.__init__() missing 1 required positional argument: 'api_key'
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 321, in main
+    analyzer = MalwareAnalyzer(enable_triage=args.enable_triage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 64, in __init__
+    self.ha_client = HybridAnalysisClient()
+                     ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: HybridAnalysisClient.__init__() missing 1 required positional argument: 'api_key'
+2026-04-05 03:13:39,932 [WARNING] MalwareAnalyzer: HYBRID_ANALYSIS_KEY not found in environment
+2026-04-05 03:13:39,933 [WARNING] MalwareAnalyzer: VIRUSTOTAL_KEY not found in environment
+2026-04-05 03:13:39,960 [ERROR] __main__: Fatal error: No sandbox API keys configured. Set HYBRID_ANALYSIS_KEY, VIRUSTOTAL_KEY, or TRIAGE_KEY in .env file
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 356, in main
+    analyzer = MalwareAnalyzer(enable_triage=args.enable_triage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 102, in __init__
+    raise RuntimeError(
+RuntimeError: No sandbox API keys configured. Set HYBRID_ANALYSIS_KEY, VIRUSTOTAL_KEY, or TRIAGE_KEY in .env file
+2026-04-05 03:13:57,529 [WARNING] MalwareAnalyzer: HYBRID_ANALYSIS_KEY not found in environment
+2026-04-05 03:13:57,530 [WARNING] MalwareAnalyzer: VIRUSTOTAL_KEY not found in environment
+2026-04-05 03:13:57,546 [ERROR] __main__: Fatal error: No sandbox API keys configured. Set HYBRID_ANALYSIS_KEY, VIRUSTOTAL_KEY, or TRIAGE_KEY in .env file
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 356, in main
+    analyzer = MalwareAnalyzer(enable_triage=args.enable_triage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 102, in __init__
+    raise RuntimeError(
+RuntimeError: No sandbox API keys configured. Set HYBRID_ANALYSIS_KEY, VIRUSTOTAL_KEY, or TRIAGE_KEY in .env file
+2026-04-05 03:14:53,831 [WARNING] MalwareAnalyzer: HYBRID_ANALYSIS_KEY not found in environment
+2026-04-05 03:14:53,831 [WARNING] MalwareAnalyzer: VIRUSTOTAL_KEY not found in environment
+2026-04-05 03:14:53,853 [ERROR] __main__: Fatal error: No sandbox API keys configured. Set HYBRID_ANALYSIS_KEY, VIRUSTOTAL_KEY, or TRIAGE_KEY in .env file
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 356, in main
+    analyzer = MalwareAnalyzer(enable_triage=args.enable_triage)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 102, in __init__
+    raise RuntimeError(
+RuntimeError: No sandbox API keys configured. Set HYBRID_ANALYSIS_KEY, VIRUSTOTAL_KEY, or TRIAGE_KEY in .env file
+2026-04-05 03:15:14,863 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 03:15:14,863 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 03:15:14,867 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 03:15:14,868 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 03:15:14,868 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 03:15:14,939 [ERROR] __main__: Fatal error: tuple indices must be integers or slices, not str
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 357, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 136, in analyze
+    if not guard_results["safe"]:
+           ~~~~~~~~~~~~~^^^^^^^^
+TypeError: tuple indices must be integers or slices, not str
+2026-04-05 03:15:34,393 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 03:15:34,393 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 03:15:34,395 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 03:15:34,395 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 03:15:34,395 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 03:15:34,398 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 03:15:34,399 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 03:15:34,399 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 03:15:44,580 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:15:44,581 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:15:44,584 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 03:15:44,584 [WARNING] MalwareAnalyzer:   [!] VT normalization failed: VirusTotalNormalizer.normalize() takes 2 positional arguments but 3 were given
+2026-04-05 03:15:44,585 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 03:15:44,589 [ERROR] __main__: Fatal error: Cannot merge empty report list
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 357, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 158, in analyze
+    merged_report = self.merger.merge(unified_reports)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\merger.py", line 41, in merge
+    raise ValueError("Cannot merge empty report list")
+ValueError: Cannot merge empty report list
+2026-04-05 03:16:35,591 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 03:16:35,591 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 03:16:35,592 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 03:16:35,592 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 03:16:35,592 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 03:16:35,596 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 03:16:35,597 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 03:16:35,597 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 03:16:45,748 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:16:45,749 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:16:45,752 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 03:16:45,755 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 03:16:45,756 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 03:17:18,389 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 03:17:18,390 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 03:17:18,390 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 03:17:18,390 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 03:17:18,390 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 03:17:18,392 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 03:17:18,394 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 03:17:18,395 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 03:17:28,484 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:17:28,484 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:17:28,486 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 03:17:28,488 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 03:17:28,488 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 03:19:27,103 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 03:19:27,103 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 03:19:27,105 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 03:19:27,105 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 03:19:27,105 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 03:19:27,106 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-05 03:19:27,106 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 03:19:27,107 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 03:19:27,107 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 03:19:37,225 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:19:37,226 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:19:37,227 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-05 03:19:37,227 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 03:19:37,228 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-05 03:19:37,228 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-05 03:19:37,228 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 03:19:37,229 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 03:19:37,229 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-05 03:19:37,229 [INFO] MalwareAnalyzer:   [+] Risk score: 90.0/10
+2026-04-05 03:19:37,229 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-05 03:19:37,229 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-05 03:19:37,229 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-05 03:19:37,230 [ERROR] MalwareAnalyzer: [-] Analysis failed: object of type 'MergedReport' has no len()
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 168, in analyze
+    self.logger.info(f"  [+] Mapped to {len(mitre_techniques)} MITRE technique(s)")
+                                        ^^^^^^^^^^^^^^^^^^^^^
+TypeError: object of type 'MergedReport' has no len()
+2026-04-05 03:19:37,231 [ERROR] __main__: Fatal error: object of type 'MergedReport' has no len()
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 357, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 168, in analyze
+    self.logger.info(f"  [+] Mapped to {len(mitre_techniques)} MITRE technique(s)")
+                                        ^^^^^^^^^^^^^^^^^^^^^
+TypeError: object of type 'MergedReport' has no len()
+2026-04-05 03:20:05,702 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 03:20:05,703 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 03:20:05,703 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 03:20:05,704 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 03:20:05,704 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 03:20:05,704 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-05 03:20:05,705 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 03:20:05,706 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 03:20:05,707 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 03:20:15,742 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:20:15,742 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:20:15,744 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-05 03:20:15,744 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 03:20:15,744 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-05 03:20:15,745 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-05 03:20:15,745 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 03:20:15,745 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 03:20:15,745 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-05 03:20:15,745 [INFO] MalwareAnalyzer:   [+] Risk score: 90.0/10
+2026-04-05 03:20:15,745 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-05 03:20:15,745 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-05 03:20:15,746 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-05 03:20:15,746 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-05 03:20:15,746 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-05 03:20:15,747 [ERROR] MalwareAnalyzer: [-] Analysis failed: 'charmap' codec can't encode character '\U0001f512' in position 4179: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 172, in analyze
+    output_paths = self._generate_reports(merged_report, output_dir, file_name)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 315, in _generate_reports
+    f.write(html_content)
+  File "C:\Users\bhavy\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f512' in position 4179: character maps to <undefined>
+2026-04-05 03:20:15,749 [ERROR] __main__: Fatal error: 'charmap' codec can't encode character '\U0001f512' in position 4179: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 172, in analyze
+    output_paths = self._generate_reports(merged_report, output_dir, file_name)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 315, in _generate_reports
+    f.write(html_content)
+  File "C:\Users\bhavy\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f512' in position 4179: character maps to <undefined>
+2026-04-05 03:21:42,786 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 03:21:42,787 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 03:21:42,788 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 03:21:42,788 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 03:21:42,789 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 03:21:42,789 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-05 03:21:42,790 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 03:21:42,791 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 03:21:42,791 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 03:21:53,047 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:21:53,047 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:21:53,049 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-05 03:21:53,049 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 03:21:53,049 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-05 03:21:53,050 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-05 03:21:53,050 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 03:21:53,050 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 03:21:53,050 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-05 03:21:53,050 [INFO] MalwareAnalyzer:   [+] Risk score: 90.0/10
+2026-04-05 03:21:53,050 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-05 03:21:53,050 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-05 03:21:53,051 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-05 03:21:53,051 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-05 03:21:53,051 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-05 03:21:53,053 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\reverse_shell_report.html
+2026-04-05 03:21:53,054 [ERROR] MalwareAnalyzer: [-] Analysis failed: 'str' object has no attribute 'value'
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 172, in analyze
+    output_paths = self._generate_reports(merged_report, output_dir, file_name)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 319, in _generate_reports
+    json_content = self.json_exporter.export(merged_report)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\report_generator\json_export.py", line 30, in export
+    report_dict = self._serialize_report(report)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\report_generator\json_export.py", line 97, in _serialize_report
+    "generators": [source.value for _, source in report.verdicts.items()],
+                   ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'value'
+2026-04-05 03:21:53,057 [ERROR] __main__: Fatal error: 'str' object has no attribute 'value'
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 172, in analyze
+    output_paths = self._generate_reports(merged_report, output_dir, file_name)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 319, in _generate_reports
+    json_content = self.json_exporter.export(merged_report)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\report_generator\json_export.py", line 30, in export
+    report_dict = self._serialize_report(report)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\report_generator\json_export.py", line 97, in _serialize_report
+    "generators": [source.value for _, source in report.verdicts.items()],
+                   ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'value'
+2026-04-05 03:22:42,155 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 03:22:42,156 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 03:22:42,157 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 03:22:42,157 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 03:22:42,157 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 03:22:42,158 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-05 03:22:42,158 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 03:22:42,159 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 03:22:42,160 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 03:22:52,303 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:22:52,303 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:22:52,305 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-05 03:22:52,305 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 03:22:52,306 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-05 03:22:52,306 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-05 03:22:52,306 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 03:22:52,306 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 03:22:52,307 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-05 03:22:52,307 [INFO] MalwareAnalyzer:   [+] Risk score: 90.0/10
+2026-04-05 03:22:52,307 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-05 03:22:52,307 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-05 03:22:52,307 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-05 03:22:52,307 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-05 03:22:52,307 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-05 03:22:52,309 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\reverse_shell_report.html
+2026-04-05 03:22:52,310 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\reverse_shell_report.json
+2026-04-05 03:22:52,310 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-05 03:24:20,850 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 03:24:20,850 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 03:24:20,851 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 03:24:20,851 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 03:24:20,851 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 03:24:20,852 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-05 03:24:20,852 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 03:24:20,852 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 03:24:20,854 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 03:24:31,938 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:24:31,939 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 03:24:31,940 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-05 03:24:31,940 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 03:24:31,941 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-05 03:24:31,942 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-05 03:24:31,942 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 03:24:31,942 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 03:24:31,943 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-05 03:24:31,943 [INFO] MalwareAnalyzer:   [+] Risk score: 90.0/10
+2026-04-05 03:24:31,944 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-05 03:24:31,944 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-05 03:24:31,944 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-05 03:24:31,945 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-05 03:24:31,945 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-05 03:24:31,949 [INFO] MalwareAnalyzer:   [+] HTML report: results\reverse_shell_report.html
+2026-04-05 03:24:31,950 [INFO] MalwareAnalyzer:   [+] JSON report: results\reverse_shell_report.json
+2026-04-05 03:24:31,951 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-05 16:27:28,306 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 16:27:28,307 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-05 16:27:28,517 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-05 16:27:28,517 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-05 16:27:28,517 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 16:27:28,517 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-05 16:27:28,518 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 16:27:28,519 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 16:27:28,519 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 16:27:39,648 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 16:27:39,650 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 16:27:39,651 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-05 16:27:39,651 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 16:27:39,651 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-05 16:27:39,651 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-05 16:27:39,652 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 16:27:39,652 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 16:27:39,652 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-05 16:27:39,652 [INFO] MalwareAnalyzer:   [+] Risk score: 90.0/10
+2026-04-05 16:27:39,652 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-05 16:27:39,653 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-05 16:27:39,653 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-05 16:27:39,653 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-05 16:27:39,653 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-05 16:27:39,654 [INFO] MalwareAnalyzer:   [+] HTML report: results\reverse_shell_report.html
+2026-04-05 16:27:39,655 [INFO] MalwareAnalyzer:   [+] JSON report: results\reverse_shell_report.json
+2026-04-05 16:27:39,655 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-05 16:35:18,860 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 16:35:18,862 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-05 16:35:18,863 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-05 16:35:18,864 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-05 16:35:18,864 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 16:35:18,865 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-05 16:35:18,865 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 16:35:18,866 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 16:35:18,866 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 16:35:20,291 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: File not found: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-05 16:35:30,259 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 16:35:30,260 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 16:35:30,261 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-05 16:35:30,264 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\IT PERSONAL\SOAR\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-05 16:37:43,341 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 16:37:43,342 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-05 16:37:43,343 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-05 16:37:43,343 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-05 16:37:43,343 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 16:37:43,344 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-05 16:37:43,344 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 16:37:43,345 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 16:37:43,345 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 16:38:02,706 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 16:38:02,707 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 16:38:02,708 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-05 16:38:02,708 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 16:38:02,708 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-05 16:38:02,709 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-05 16:38:02,709 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 16:38:02,710 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 16:38:02,710 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-05 16:38:02,710 [INFO] MalwareAnalyzer:   [+] Risk score: 90.0/10
+2026-04-05 16:38:02,710 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-05 16:38:02,710 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-05 16:38:02,710 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-05 16:38:02,711 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-05 16:38:02,711 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-05 16:38:02,713 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-05 16:38:02,714 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-05 16:38:02,714 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-05 22:00:29,336 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-05 22:00:29,341 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-05 22:00:29,627 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-05 22:00:29,627 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-05 22:00:29,627 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-05 22:00:29,628 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-05 22:00:29,628 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-05 22:00:29,629 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-05 22:00:29,630 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-05 22:01:01,500 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 22:01:01,501 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)')))
+2026-04-05 22:01:01,503 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-05 22:01:01,503 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-05 22:01:01,504 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-05 22:01:01,504 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-05 22:01:01,505 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-05 22:01:01,507 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-05 22:01:01,507 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-05 22:01:01,507 [INFO] MalwareAnalyzer:   [+] Risk score: 90.0/10
+2026-04-05 22:01:01,507 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-05 22:01:01,507 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-05 22:01:01,507 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-05 22:01:01,507 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-05 22:01:01,508 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-05 22:01:01,511 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-05 22:01:01,512 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-05 22:01:01,513 [INFO] MalwareAnalyzer: [+] Analysis complete!

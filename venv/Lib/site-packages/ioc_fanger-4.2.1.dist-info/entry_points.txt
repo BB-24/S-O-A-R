@@ -1,0 +1,3 @@
+[console_scripts]
+defang = ioc_fanger.ioc_fanger:cli_defang
+fang = ioc_fanger.ioc_fanger:cli_fang
