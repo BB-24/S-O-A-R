@@ -27,10 +27,47 @@ class HybridAnalysisNormalizer(BaseNormalizer):
 
     def normalize(self, raw_response: Dict[str, Any]) -> UnifiedReport:
         """Convert Hybrid Analysis response to UnifiedReport."""
-        
         report = raw_response.get("analysis", {})
         system = raw_response.get("system", {})
         metadata = raw_response.get("metadata", {})
+
+        if not metadata and "results" in raw_response:
+            first_result = (raw_response.get("results") or [{}])[0]
+            if isinstance(first_result, dict):
+                metadata = {
+                    "filename": first_result.get("filename") or first_result.get("submit_name"),
+                    "hashes": {
+                        "md5": first_result.get("md5"),
+                        "sha1": first_result.get("sha1"),
+                        "sha256": first_result.get("sha256"),
+                    },
+                    "file_size": first_result.get("size") or first_result.get("file_size"),
+                    "file_type": first_result.get("type") or first_result.get("file_type"),
+                }
+                report = {
+                    "state": "SUCCESS",
+                    "verdict": first_result.get("verdict") or first_result.get("threat_score"),
+                    "timestamp": first_result.get("analysis_start_time") or first_result.get("submit_time"),
+                }
+
+        if not metadata:
+            metadata = {
+                "filename": raw_response.get("filename") or raw_response.get("submit_name", "unknown"),
+                "hashes": {
+                    "md5": raw_response.get("md5"),
+                    "sha1": raw_response.get("sha1"),
+                    "sha256": raw_response.get("sha256"),
+                },
+                "file_size": raw_response.get("size") or raw_response.get("file_size"),
+                "file_type": raw_response.get("type") or raw_response.get("type_short") or raw_response.get("type_desc"),
+            }
+
+        if not report:
+            report = {
+                "state": "SUCCESS" if raw_response else "UNKNOWN",
+                "verdict": raw_response.get("verdict") or raw_response.get("threat_score") or "unknown",
+                "timestamp": raw_response.get("analysis_start_time") or raw_response.get("submit_time"),
+            }
 
         # Extract file info
         file_name = metadata.get("filename", "unknown")
@@ -72,6 +109,10 @@ class HybridAnalysisNormalizer(BaseNormalizer):
         # Extract IOCs
         unified.iocs = self._extract_iocs(raw_response)
 
+        # Fallback detections for flat Hybrid responses
+        if not unified.detections:
+            unified.detections = self._extract_detections(raw_response)
+
         # Risk assessment
         unified.risk = self._calculate_risk(report, raw_response)
 
@@ -82,7 +123,29 @@ class HybridAnalysisNormalizer(BaseNormalizer):
 
     def validate_response(self, raw_response: Dict[str, Any]) -> bool:
         """Validate Hybrid Analysis response."""
-        return "analysis" in raw_response and "metadata" in raw_response
+        if "analysis" in raw_response and "metadata" in raw_response:
+            return True
+        if "results" in raw_response and isinstance(raw_response.get("results"), list):
+            return True
+        return any(key in raw_response for key in ["sha256", "md5", "verdict", "threat_score"])
+
+    def _extract_detections(self, raw_response: Dict[str, Any]) -> List[str]:
+        """Extract detection-like fields from HA responses."""
+        detections = []
+
+        if raw_response.get("verdict"):
+            detections.append(f"Hybrid Analysis Verdict: {raw_response.get('verdict')}")
+
+        threat_score = raw_response.get("threat_score")
+        if threat_score is not None:
+            detections.append(f"Hybrid Analysis Threat Score: {threat_score}")
+
+        tags = raw_response.get("classification_tags") or raw_response.get("tags") or []
+        if isinstance(tags, list):
+            for tag in tags[:10]:
+                detections.append(f"Tag: {tag}")
+
+        return detections
 
     def _map_verdict(self, verdict: str) -> str:
         """Map Hybrid Analysis verdict to unified verdict."""

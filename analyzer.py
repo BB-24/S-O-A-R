@@ -60,28 +60,34 @@ class MalwareAnalyzer:
         # Guard: Validate environment and file safety
         self.guard = SandboxGuard()
         
-        # Get API keys from environment
-        ha_key = os.getenv("HYBRID_ANALYSIS_API_KEY")
-        vt_key = os.getenv("VIRUSTOTAL_API_KEY")
-        triage_key = os.getenv("TRIAGE_API_KEY")
+        # Get API keys from environment (supports legacy aliases)
+        ha_key = self._get_env_key("HYBRID_ANALYSIS_API_KEY", "HYBRID_ANALYSIS_KEY")
+        vt_key = self._get_env_key("VIRUSTOTAL_API_KEY", "VIRUSTOTAL_KEY")
+        triage_key = self._get_env_key("TRIAGE_API_KEY", "TRIAGE_KEY")
         
         # Initialize sandbox clients with API keys
         if ha_key:
             self.ha_client = HybridAnalysisClient(ha_key)
         else:
-            self.logger.warning("HYBRID_ANALYSIS_KEY not found in environment")
+            self.logger.warning(
+                "Hybrid Analysis API key not found. Set HYBRID_ANALYSIS_API_KEY in .env"
+            )
             self.ha_client = None
             
         if vt_key:
             self.vt_client = VirusTotalClient(vt_key)
         else:
-            self.logger.warning("VIRUSTOTAL_KEY not found in environment")
+            self.logger.warning(
+                "VirusTotal API key not found. Set VIRUSTOTAL_API_KEY in .env"
+            )
             self.vt_client = None
             
         if enable_triage and triage_key:
             self.triage_client = TriageClient(triage_key)
         elif enable_triage:
-            self.logger.warning("Triage enabled but TRIAGE_KEY not found in environment")
+            self.logger.warning(
+                "Triage enabled but TRIAGE_API_KEY not found in .env"
+            )
             self.triage_client = None
         else:
             self.triage_client = None
@@ -105,6 +111,35 @@ class MalwareAnalyzer:
             )
         
         self.logger.info("MalwareAnalyzer initialized successfully")
+
+    def _get_env_key(self, primary_name: str, *aliases: str) -> Optional[str]:
+        """Return first valid API key from env names, ignoring placeholders."""
+        candidates = [primary_name, *aliases]
+        invalid_tokens = {
+            "",
+            "your_api_key_here",
+            "your_hybrid_analysis_api_key_here",
+            "your_virustotal_api_key_here",
+            "your_triage_api_key_here",
+            "changeme",
+            "replace_me",
+            "none",
+            "null",
+        }
+
+        for name in candidates:
+            raw_value = os.getenv(name)
+            if raw_value is None:
+                continue
+            value = raw_value.strip().strip('"').strip("'")
+            if value.lower() in invalid_tokens:
+                self.logger.warning(
+                    f"Environment key {name} appears to be a placeholder and will be ignored"
+                )
+                continue
+            if value:
+                return value
+        return None
 
     def analyze(self, file_path: str, output_dir: str = "artifacts") -> Dict[str, str]:
         """
@@ -198,7 +233,14 @@ class MalwareAnalyzer:
                 return None
             try:
                 self.logger.info("  Submitting to Hybrid Analysis...")
-                report = self.ha_client.get_report(file_hash)
+                report = None
+                try:
+                    report = self.ha_client.get_report(file_hash)
+                except Exception as lookup_error:
+                    self.logger.debug(
+                        f"    HA direct report lookup unavailable ({lookup_error}); submitting file"
+                    )
+
                 if not report:
                     report = self.ha_client.submit_file(file_path)
                     if report and "submission_timestamp" not in report:
@@ -223,7 +265,35 @@ class MalwareAnalyzer:
                 return None
             try:
                 self.logger.info("  Submitting to VirusTotal...")
-                report = self.vt_client.get_report(file_hash)
+                report = None
+                try:
+                    report = self.vt_client.get_report(file_hash)
+                except Exception as lookup_error:
+                    self.logger.debug(
+                        f"    VT direct report lookup unavailable ({lookup_error}); submitting file"
+                    )
+
+                if not report:
+                    submission = self.vt_client.submit_file(file_path)
+                    if submission and submission.get("status") == "completed" and submission.get("raw"):
+                        report = {"data": submission.get("raw")}
+                    else:
+                        import time
+                        max_wait = 120  # 2 minutes
+                        elapsed = 0
+                        while elapsed < max_wait:
+                            try:
+                                report = self.vt_client.get_report(file_hash)
+                                if report:
+                                    break
+                            except Exception:
+                                pass
+                            time.sleep(10)
+                            elapsed += 10
+
+                        if not report:
+                            raise RuntimeError("VirusTotal report not available after submission")
+
                 results["virustotal"] = report
                 return "virustotal"
             except Exception as e:

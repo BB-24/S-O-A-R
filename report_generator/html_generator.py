@@ -72,8 +72,58 @@ class HTMLGenerator:
             "mitre_techniques": report.mitre_techniques,
             "mitre_count": len(report.mitre_techniques),
             "sources_count": len(report.source_reports),
+            "source_reports": self._build_source_reports(report),
             "summary": report.summary(),
         }
+
+    def _build_source_reports(self, report: MergedReport) -> list:
+        """Build per-source dashboard cards for side-by-side presentation."""
+        source_cards = []
+        present_sources = set()
+
+        for source_report in report.source_reports:
+            source_name = source_report.source.value
+            present_sources.add(source_name)
+            source_cards.append(
+                {
+                    "source": source_name,
+                    "title": source_name.replace("_", " ").title(),
+                    "verdict": source_report.verdict or "unknown",
+                    "verdict_class": self._verdict_class(source_report.verdict or "unknown"),
+                    "risk_score": source_report.risk.overall_score if source_report.risk else 0,
+                    "threat_level": source_report.risk.threat_level.value if source_report.risk else "informational",
+                    "detections": source_report.detections or [],
+                    "detection_count": len(source_report.detections or []),
+                    "ioc_count": len(source_report.iocs or []),
+                    "network_count": len(source_report.network_activities or []),
+                    "process_count": len(source_report.processes or []),
+                    "sample_iocs": [ioc.value for ioc in (source_report.iocs or [])[:5]],
+                }
+            )
+
+        # Always show the two primary sources as separate panels on dashboard
+        for source_name in ["hybrid_analysis", "virustotal"]:
+            if source_name in present_sources:
+                continue
+            source_cards.append(
+                {
+                    "source": source_name,
+                    "title": source_name.replace("_", " ").title(),
+                    "verdict": "no_data",
+                    "verdict_class": "secondary",
+                    "risk_score": 0,
+                    "threat_level": "not_available",
+                    "detections": [],
+                    "detection_count": 0,
+                    "ioc_count": 0,
+                    "network_count": 0,
+                    "process_count": 0,
+                    "sample_iocs": [],
+                }
+            )
+
+        source_cards.sort(key=lambda card: card["source"])
+        return source_cards
 
     def _verdict_class(self, verdict: str) -> str:
         """Get Bootstrap class for verdict."""
@@ -341,6 +391,55 @@ class HTMLGenerator:
                 </div>
             </div>
         </div>
+
+        <!-- Source-Wise Presentation -->
+        {% if source_reports %}
+        <div class="card">
+            <div class="card-header">
+                🧩 Source-Wise Dashboard View
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for source_report in source_reports %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-{{ source_report.verdict_class }}">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <strong>{{ source_report.title }}</strong>
+                                <span class="badge bg-{{ source_report.verdict_class }}">{{ source_report.verdict | upper }}</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Risk Score:</strong> {{ source_report.risk_score | int }}</p>
+                                <p><strong>Threat Level:</strong> {{ source_report.threat_level | upper }}</p>
+                                <p><strong>Detections:</strong> {{ source_report.detection_count }}</p>
+                                <p><strong>IOCs:</strong> {{ source_report.ioc_count }}</p>
+                                <p><strong>Network Activities:</strong> {{ source_report.network_count }}</p>
+                                <p><strong>Processes:</strong> {{ source_report.process_count }}</p>
+
+                                {% if source_report.detections %}
+                                <p class="mb-1"><strong>Top Detections:</strong></p>
+                                <ul class="mb-2" style="font-size: 0.9rem;">
+                                    {% for detection in source_report.detections[:5] %}
+                                    <li>{{ detection }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+
+                                {% if source_report.sample_iocs %}
+                                <p class="mb-1"><strong>Sample IOCs:</strong></p>
+                                <ul class="mb-0" style="font-size: 0.9rem; word-break: break-all;">
+                                    {% for ioc_value in source_report.sample_iocs %}
+                                    <li>{{ ioc_value }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
 
         <!-- Detections -->
         {% if detections %}

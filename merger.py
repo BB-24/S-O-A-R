@@ -228,12 +228,14 @@ class ReportMerger:
 
         scores = [r.risk.overall_score for r in reports if r.risk]
         confidences = [r.risk.confidence for r in reports if r.risk]
+        total_confidence = sum(confidences)
 
         # Average score (weighted by confidence)
         if scores:
-            weighted_score = sum(s * c for s, c in zip(scores, confidences)) / sum(
-                confidences
-            )
+            if total_confidence > 0:
+                weighted_score = sum(s * c for s, c in zip(scores, confidences)) / total_confidence
+            else:
+                weighted_score = sum(scores) / len(scores)
         else:
             weighted_score = 0.0
 
