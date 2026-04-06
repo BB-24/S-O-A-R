@@ -4,7 +4,7 @@ A production-quality Python framework for automating malware analysis by integra
 
 ## Features
 
-- **Multi-Sandbox Integration**: Parallel submission to Hybrid Analysis, VirusTotal, and Triage
+- **Multi-Sandbox Integration**: Parallel submission to Hybrid Analysis and VirusTotal
 - **Unified Schema**: Normalizes responses from different APIs into a canonical data model
 - **Report Merging**: Intelligently combines results from multiple sources with deduplication
 - **IOC Intelligence**: Extracts and deduplicated Indicators of Compromise
@@ -24,15 +24,13 @@ API LAYER
 ├── clients/
 │   ├── base.py (abstract interface)
 │   ├── hybrid_analysis.py (HybridAnalysisClient)
-│   ├── virustotal.py (VirusTotalClient)
-│   └── triage.py (TriageClient - optional)
+│   └── virustotal.py (VirusTotalClient)
 
 NORMALIZATION LAYER
 ├── normalizers/
 │   ├── base.py (BaseNormalizer)
 │   ├── hybrid_analysis.py
-│   ├── virustotal.py
-│   └── triage.py
+│   └── virustotal.py
 
 CORE SCHEMA
 └── schema.py (UnifiedReport, IOC, MergedReport, etc.)
@@ -71,7 +69,6 @@ pip install -r requirements.txt
 
 - **Hybrid Analysis**: https://hybrid-analysis.com/api
 - **VirusTotal**: https://www.virustotal.com/gui/my-apikey
-- **Triage** (optional): https://triage.com/
 
 ### 4. Configure Environment
 
@@ -153,14 +150,12 @@ SOAR/
 ├── clients/                       # Sandbox API clients
 │   ├── base.py
 │   ├── hybrid_analysis.py
-│   ├── virustotal.py
-│   └── triage.py
+│   └── virustotal.py
 │
 ├── normalizers/                   # API response normalization
 │   ├── base.py
 │   ├── hybrid_analysis.py
-│   ├── virustotal.py
-│   └── triage.py
+│   └── virustotal.py
 │
 ├── correlator/                    # Intelligence correlation
 │   ├── correlation_engine.py      # Engine & MITRE mapping
@@ -209,7 +204,6 @@ Consolidated report from multiple sources:
 Convert sandbox-specific formats to `UnifiedReport`:
 - `HybridAnalysisNormalizer`: Converts Hybrid Analysis API responses
 - `VirusTotalNormalizer`: Converts VirusTotal API responses
-- `TriageNormalizer`: Converts Triage API responses
 
 ### ReportMerger (merger.py)
 Intelligently combines multiple reports:
@@ -271,7 +265,6 @@ Process(
 # API Keys (required)
 HYBRID_ANALYSIS_API_KEY=xxx
 VIRUSTOTAL_API_KEY=yyy
-TRIAGE_API_KEY=zzz
 
 # Optional Settings
 API_TIMEOUT=30              # seconds

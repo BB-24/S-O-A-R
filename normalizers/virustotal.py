@@ -144,40 +144,52 @@ class VirusTotalNormalizer(BaseNormalizer):
         suspicious = last_analysis_stats.get("suspicious", 0)
         total = sum(last_analysis_stats.values())
 
-        # Calculate detection ratio
         detected = malicious + suspicious
         if total > 0:
             detection_ratio = detected / total
+            malicious_ratio = malicious / total
+            suspicious_ratio = suspicious / total
         else:
-            detection_ratio = 0
+            detection_ratio = 0.0
+            malicious_ratio = 0.0
+            suspicious_ratio = 0.0
 
-        # Score calculation
-        if malicious >= 5:
-            score = 90.0
+        # Dynamic scoring to avoid fixed plateaus (e.g., constant 90 for many files)
+        ratio_component = (malicious_ratio * 75.0) + (suspicious_ratio * 25.0)
+        count_component = min(20.0, malicious * 0.8) + min(8.0, suspicious * 0.4)
+        score = ratio_component + count_component
+
+        if detected == 0:
+            score = 5.0 if total > 0 else 0.0
+
+        score = round(min(100.0, max(0.0, score)), 1)
+
+        if score >= 85:
             threat_level = ThreatLevel.CRITICAL
-        elif malicious > 0:
-            score = 75.0
+        elif score >= 65:
             threat_level = ThreatLevel.HIGH
-        elif suspicious >= 3:
-            score = 60.0
+        elif score >= 40:
             threat_level = ThreatLevel.MEDIUM
-        elif suspicious > 0 or detection_ratio > 0.1:
-            score = 40.0
+        elif score >= 20:
             threat_level = ThreatLevel.LOW
         else:
-            score = 5.0
             threat_level = ThreatLevel.INFORMATIONAL
+
+        sample_confidence = min(1.0, total / 60.0)
+        signal_confidence = detection_ratio
+        confidence = min(1.0, (0.5 * sample_confidence) + (0.5 * signal_confidence))
 
         reasoning = [
             f"Malicious detections: {malicious}",
             f"Suspicious detections: {suspicious}",
             f"Total engines: {total}",
             f"Detection ratio: {detection_ratio:.1%}",
+            f"Computed risk score: {score:.1f}",
         ]
 
         return RiskAssessment(
             overall_score=score,
             threat_level=threat_level,
-            confidence=min(1.0, detected / max(1, total)),
+            confidence=confidence,
             reasoning=reasoning,
         )

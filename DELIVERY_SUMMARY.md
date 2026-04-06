@@ -21,7 +21,7 @@ Status: **COMPLETE** ✓
 Comprehensive dataclass-based schema including:
 - `IOCType` enum - IP, Domain, URL, Hash types
 - `ThreatLevel` enum - Critical, High, Medium, Low
-- `SandboxSource` enum - Hybrid Analysis, VirusTotal, Triage
+- `SandboxSource` enum - Hybrid Analysis, VirusTotal
 - `IOC` - Individual indicator of compromise
 - `Process` - Process execution information
 - `NetworkActivity` - Network connections and DNS
@@ -35,7 +35,6 @@ Comprehensive dataclass-based schema including:
 - `base.py` - Abstract BaseSandboxClient interface
 - `hybrid_analysis.py` - Hybrid Analysis (AnyRun) API client
 - `virustotal.py` - VirusTotal v3 API client
-- `triage.py` - Triage sandbox API client (optional)
 
 **Features:**
 - Automatic retry logic with exponential backoff
@@ -47,7 +46,6 @@ Comprehensive dataclass-based schema including:
 - `base.py` - Abstract BaseNormalizer interface
 - `hybrid_analysis.py` - Converts Hybrid Analysis responses
 - `virustotal.py` - Converts VirusTotal responses
-- `triage.py` - Converts Triage responses (optional)
 
 **Functionality:**
 - Extract file metadata
@@ -122,8 +120,8 @@ Comprehensive dataclass-based schema including:
 ## 🏗️ ARCHITECTURE COMPLIANCE
 
 ✓ **ENTRY LAYER**: analyzer.py + config.yaml + sandbox_guard.py
-✓ **API LAYER**: clients/ with base + 3 implementations
-✓ **NORMALIZATION LAYER**: normalizers/ with base + 3 implementations
+✓ **API LAYER**: clients/ with base + 2 implementations
+✓ **NORMALIZATION LAYER**: normalizers/ with base + 2 implementations
 ✓ **CORE SCHEMA**: schema.py with all required dataclasses
 ✓ **MERGER**: merger.py with deduplication and merging
 ✓ **CORRELATION**: correlation_engine.py + ioc_extractor.py
@@ -146,15 +144,13 @@ SOAR/
 │   ├── __init__.py
 │   ├── base.py                          [Abstract base - 50 lines]
 │   ├── hybrid_analysis.py               [HA client - 150+ lines]
-│   ├── virustotal.py                    [VT client - 200+ lines]
-│   └── triage.py                        [Triage client - 100+ lines]
+│   └── virustotal.py                    [VT client - 200+ lines]
 │
 ├── normalizers/                         [NORMALIZERS]
 │   ├── __init__.py
 │   ├── base.py                          [Abstract base - 80 lines]
 │   ├── hybrid_analysis.py               [HA normalizer - 200+ lines]
-│   ├── virustotal.py                    [VT normalizer - 150+ lines]
-│   └── triage.py                        [Triage normalizer - 80 lines]
+│   └── virustotal.py                    [VT normalizer - 150+ lines]
 │
 ├── correlator/                          [INTELLIGENCE CORRELATION]
 │   ├── __init__.py
@@ -188,14 +184,13 @@ SOAR/
 ## 🚀 KEY FEATURES DELIVERED
 
 ### ✓ Multi-Sandbox Integration
-- Parallel submission to 3 major platforms
+- Parallel submission to 2 major platforms
 - ThreadPoolExecutor for concurrent operations
 - Automatic retry logic with backoff
 
 ### ✓ Unified Normalization
 - Convert Hybrid Analysis responses → UnifiedReport
 - Convert VirusTotal responses → UnifiedReport
-- Convert Triage responses → UnifiedReport
 - All outputs conform to schema
 
 ### ✓ Intelligent Merging
@@ -273,7 +268,6 @@ print(f"JSON: {outputs['json']}")
 ```bash
 HYBRID_ANALYSIS_API_KEY=xxx       # Required
 VIRUSTOTAL_API_KEY=yyy             # Required
-TRIAGE_API_KEY=zzz                 # Optional
 API_TIMEOUT=30                     # seconds
 MAX_WORKERS=3                      # parallel submissions
 ```
@@ -372,7 +366,6 @@ pytest tests/ -v
 ✓ Accept malware sample via CLI
 ✓ Submit to Hybrid Analysis (required)
 ✓ Submit to VirusTotal (required)
-✓ Optional Triage integration
 ✓ Fetch reports with polling
 ✓ Normalize all responses
 ✓ Merge multiple reports

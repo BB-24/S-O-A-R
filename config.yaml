@@ -12,10 +12,6 @@ sandboxes:
   virustotal:
     enabled: true
     timeout: 30
-  
-  triage:
-    enabled: false  # Set to true when API key is available
-    timeout: 30
 
 # Analysis Settings
 analysis:

@@ -28,10 +28,8 @@ load_dotenv()
 # Import pipeline components
 from clients.hybrid_analysis import HybridAnalysisClient
 from clients.virustotal import VirusTotalClient
-from clients.triage import TriageClient
 from normalizers.hybrid_analysis import HybridAnalysisNormalizer
 from normalizers.virustotal import VirusTotalNormalizer
-from normalizers.triage import TriageNormalizer
 from merger import ReportMerger
 from correlator.correlation_engine import CorrelationEngine
 from report_generator.html_generator import HTMLGenerator
@@ -47,15 +45,14 @@ class MalwareAnalyzer:
     extracts IOCs, performs MITRE correlation, and generates final reports.
     """
 
-    def __init__(self, enable_triage: bool = False):
+    def __init__(self):
         """
         Initialize the analyzer with configured sandbox clients.
         
         Args:
-            enable_triage: Whether to include Triage.com integration (optional/premium)
+            None
         """
         self.logger = logging.getLogger(self.__class__.__name__)
-        self.enable_triage = enable_triage
         
         # Guard: Validate environment and file safety
         self.guard = SandboxGuard()
@@ -63,7 +60,6 @@ class MalwareAnalyzer:
         # Get API keys from environment (supports legacy aliases)
         ha_key = self._get_env_key("HYBRID_ANALYSIS_API_KEY", "HYBRID_ANALYSIS_KEY")
         vt_key = self._get_env_key("VIRUSTOTAL_API_KEY", "VIRUSTOTAL_KEY")
-        triage_key = self._get_env_key("TRIAGE_API_KEY", "TRIAGE_KEY")
         
         # Initialize sandbox clients with API keys
         if ha_key:
@@ -82,20 +78,9 @@ class MalwareAnalyzer:
             )
             self.vt_client = None
             
-        if enable_triage and triage_key:
-            self.triage_client = TriageClient(triage_key)
-        elif enable_triage:
-            self.logger.warning(
-                "Triage enabled but TRIAGE_API_KEY not found in .env"
-            )
-            self.triage_client = None
-        else:
-            self.triage_client = None
-        
         # Initialize normalizers
         self.ha_normalizer = HybridAnalysisNormalizer()
         self.vt_normalizer = VirusTotalNormalizer()
-        self.triage_normalizer = TriageNormalizer() if enable_triage else None
         
         # Initialize pipeline components
         self.merger = ReportMerger()
@@ -104,10 +89,10 @@ class MalwareAnalyzer:
         self.json_exporter = JSONExporter()
         
         # Check if at least one sandbox is configured
-        if not any([self.ha_client, self.vt_client, self.triage_client]):
+        if not any([self.ha_client, self.vt_client]):
             raise RuntimeError(
                 "No sandbox API keys configured. Set HYBRID_ANALYSIS_API_KEY, "
-                "VIRUSTOTAL_API_KEY, or TRIAGE_API_KEY in .env file"
+                "or VIRUSTOTAL_API_KEY in .env file"
             )
         
         self.logger.info("MalwareAnalyzer initialized successfully")
@@ -120,7 +105,6 @@ class MalwareAnalyzer:
             "your_api_key_here",
             "your_hybrid_analysis_api_key_here",
             "your_virustotal_api_key_here",
-            "your_triage_api_key_here",
             "changeme",
             "replace_me",
             "none",
@@ -300,26 +284,11 @@ class MalwareAnalyzer:
                 self.logger.warning(f"    [!] VirusTotal failed: {str(e)}")
                 return None
 
-        def submit_triage():
-            if not self.triage_client:
-                return None
-            try:
-                self.logger.info("  Submitting to Triage...")
-                report = self.triage_client.get_report(file_hash)
-                if report:
-                    results["triage"] = report
-                    return "triage"
-                return None
-            except Exception as e:
-                self.logger.warning(f"    [!] Triage failed: {str(e)}")
-                return None
-
         # Submit in parallel
-        with ThreadPoolExecutor(max_workers=3) as executor:
+        with ThreadPoolExecutor(max_workers=2) as executor:
             futures = {
                 executor.submit(submit_ha): "HA",
-                executor.submit(submit_vt): "VT",
-                executor.submit(submit_triage): "Triage"
+                executor.submit(submit_vt): "VT"
             }
             
             for future in as_completed(futures):
@@ -355,17 +324,6 @@ class MalwareAnalyzer:
                     self.logger.info("  [+] VT normalized")
             except Exception as e:
                 self.logger.warning(f"  [!] VT normalization failed: {str(e)}")
-        
-        if "triage" in sandbox_reports and sandbox_reports["triage"]:
-            try:
-                if self.triage_normalizer:
-                    report = self.triage_normalizer.normalize(
-                        sandbox_reports["triage"]
-                    )
-                    unified.append(report)
-                    self.logger.info("  [+] Triage normalized")
-            except Exception as e:
-                self.logger.warning(f"  [!] Triage normalization failed: {str(e)}")
         
         return unified
 
@@ -406,7 +364,6 @@ def main():
 Examples:
   python analyzer.py samples/malware.exe
   python analyzer.py samples/payload.bin --output-dir results
-  python analyzer.py samples/sample.exe --enable-triage
         """
     )
     parser.add_argument("file", help="Path to file for analysis")
@@ -414,15 +371,10 @@ Examples:
         "--output-dir", default="artifacts",
         help="Output directory for reports (default: artifacts)"
     )
-    parser.add_argument(
-        "--enable-triage", action="store_true",
-        help="Enable optional Triage.com integration (requires API key)"
-    )
-    
     args = parser.parse_args()
     
     try:
-        analyzer = MalwareAnalyzer(enable_triage=args.enable_triage)
+        analyzer = MalwareAnalyzer()
         results = analyzer.analyze(args.file, args.output_dir)
         
         print("\n" + "="*60)
@@ -442,128 +394,3 @@ Examples:
 
 if __name__ == "__main__":
     sys.exit(main())
-    
-    class MalwareAnalyzer:
-        def __init__(self):
-            self.config = {
-                "hybrid_analysis_key": os.getenv("HYBRID_ANALYSIS_API_KEY"),
-                "virustotal_key": os.getenv("VIRUSTOTAL_API_KEY"),
-                "triage_key": os.getenv("TRIAGE_API_KEY"),
-                "timeout": int(os.getenv("API_TIMEOUT", "30")),
-                "max_workers": int(os.getenv("MAX_WORKERS", "3")),
-            }
-            self.clients = {}
-            self.normalizers = {}
-            self._initialize_clients()            
-            self.merger = ReportMerger()
-            self.correlator = CorrelationEngine()
-        
-        def _initialize_clients(self):
-            ha_key = self.config.get("hybrid_analysis_key")
-            vt_key = self.config.get("virustotal_key")
-            triage_key = self.config.get("triage_key")
-            
-            if ha_key:
-                self.clients[SandboxSource.HYBRID_ANALYSIS] = HybridAnalysisClient(ha_key, self.config["timeout"])
-                self.normalizers[SandboxSource.HYBRID_ANALYSIS] = HybridAnalysisNormalizer()
-                logger.info("✓ Hybrid Analysis client initialized")
-            if vt_key:
-                self.clients[SandboxSource.VIRUSTOTAL] = VirusTotalClient(vt_key, self.config["timeout"])
-                self.normalizers[SandboxSource.VIRUSTOTAL] = VirusTotalNormalizer()
-                logger.info("✓ VirusTotal client initialized")
-            if triage_key:
-                self.clients[SandboxSource.TRIAGE] = TriageClient(triage_key, self.config["timeout"])
-                self.normalizers[SandboxSource.TRIAGE] = TriageNormalizer()
-                logger.info("✓ Triage client initialized")
-            if not self.clients:
-                raise RuntimeError("No sandbox clients initialized")
-        
-        def analyze(self, file_path: str, output_dir: str = "artifacts"):
-            file_path = Path(file_path)
-            if not file_path.exists():
-                raise FileNotFoundError(f"File not found: {file_path}")
-            logger.info(f"Starting analysis of {file_path.name}")
-            output_path = Path(output_dir)
-            output_path.mkdir(exist_ok=True)
-            logger.info(f"Submitting to {len(self.clients)} sandboxes...")
-            reports = self._submit_and_fetch(str(file_path))
-            if not reports:
-                raise RuntimeError("No successful analyses")
-            logger.info(f"Merging {len(reports)} reports...")
-            merged_report = self.merger.merge(reports)
-            logger.info("Correlating intelligence...")
-            merged_report = self.correlator.correlate(merged_report)
-            logger.info("Generating reports...")
-            output_files = self._generate_reports(merged_report, output_path)
-            return output_files
-        
-        def _submit_and_fetch(self, file_path: str):
-            reports = []
-            with ThreadPoolExecutor(max_workers=self.config["max_workers"]) as executor:
-                futures = {executor.submit(self._analyze_with_client, source, client, file_path): source for source, client in self.clients.items()}
-                for future in as_completed(futures):
-                    source = futures[future]
-                    try:
-                        report = future.result()
-                        if report:
-                            reports.append(report)
-                            logger.info(f"✓ {source.value}: Report received")
-                    except Exception as e:
-                        logger.error(f"✗ {source.value}: {e}")
-            return reports
-        
-        def _analyze_with_client(self, source, client, file_path):
-            try:
-                logger.info(f"  Submitting to {source.value}...")
-                submission = client.submit_file(file_path)
-                submission_id = submission["submission_id"]
-                logger.info(f"  Waiting for {source.value}...")
-                for attempt in range(12):
-                    status = client.check_status(submission_id)
-                    if status.get("is_complete"):
-                        break
-                    time.sleep(10)
-                raw_report = client.get_report(submission_id)
-                normalizer = self.normalizers[source]
-                if not normalizer.validate_response(raw_report):
-                    return None
-                return normalizer.normalize(raw_report)
-            except Exception as e:
-                logger.error(f"  {source.value} failed: {e}")
-                return None
-        
-        def _generate_reports(self, merged_report, output_path):
-            output_files = {}
-            json_exporter = JSONExporter()
-            json_file = output_path / "report.json"
-            json_exporter.export_file(merged_report, str(json_file))
-            output_files["json"] = str(json_file)
-            html_generator = HTMLGenerator()
-            html_file = output_path / "report.html"
-            html_generator.export_file(merged_report, str(html_file))
-            output_files["html"] = str(html_file)
-            return output_files
-    
-    parser = argparse.ArgumentParser(description="Malware Analysis Automation Pipeline")
-    parser.add_argument("file", help="Path to file to analyze")
-    parser.add_argument("-o", "--output", default="artifacts", help="Output directory")
-    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging")
-    args = parser.parse_args()
-    
-    if args.verbose:
-        logging.getLogger().setLevel(logging.DEBUG)
-    
-    try:
-        logger = logging.getLogger(__name__)
-        logger.info("=== Malware Analysis Pipeline ===")
-        analyzer = MalwareAnalyzer()
-        output_files = analyzer.analyze(args.file, args.output)
-        logger.info("Analysis Results:")
-        for report_type, file_path in output_files.items():
-            logger.info(f"  {report_type.upper()}: {file_path}")
-        logger.info("✓ Complete!")
-        sys.exit(0)
-
-    except Exception as e:
-        logger.error(f"Error: {e}")
-        sys.exit(1)

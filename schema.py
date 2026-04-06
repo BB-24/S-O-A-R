@@ -36,7 +36,6 @@ class SandboxSource(str, Enum):
     """Supported sandbox platforms."""
     HYBRID_ANALYSIS = "hybrid_analysis"
     VIRUSTOTAL = "virustotal"
-    TRIAGE = "triage"
 
 
 @dataclass
