@@ -140,7 +140,7 @@
         <!-- Header -->
         <div class="header">
             <h1>🔒 Malware Analysis Report</h1>
-            <p style="margin: 10px 0;">Generated: 2026-04-05 16:31:01 UTC</p>
+            <p style="margin: 10px 0;">Generated: 2026-04-06 18:03:42 UTC</p>
             <div class="verdict-badge danger">
                 Verdict: MALICIOUS
             </div>
@@ -186,13 +186,13 @@
                         ⚠️ Risk Score
                     </div>
                     <div class="card-body">
-                        <div class="risk-score-display danger">
-                            90
+                        <div class="risk-score-display info">
+                            23
                         </div>
                         <div class="risk-meter">
-                            <div class="risk-meter-fill danger" 
-                                 style="width: 90.0%; background-color: #dc3545;">
-                                CRITICAL
+                            <div class="risk-meter-fill info" 
+                                 style="width: 23.2%; background-color: #28a745;">
+                                LOW
                             </div>
                         </div>
                         
@@ -201,7 +201,7 @@
                             
                             <li>Merged 1 reports</li>
                             
-                            <li>Average risk score: 90.0</li>
+                            <li>Average risk score: 23.2</li>
                             
                         </ul>
                         
@@ -240,6 +240,77 @@
                 </div>
             </div>
         </div>
+
+        <!-- Source-Wise Presentation -->
+        
+        <div class="card">
+            <div class="card-header">
+                🧩 Source-Wise Dashboard View
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <strong>Hybrid Analysis</strong>
+                                <span class="badge bg-secondary">NO_DATA</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Risk Score:</strong> 0</p>
+                                <p><strong>Threat Level:</strong> NOT_AVAILABLE</p>
+                                <p><strong>Detections:</strong> 0</p>
+                                <p><strong>IOCs:</strong> 0</p>
+                                <p><strong>Network Activities:</strong> 0</p>
+                                <p><strong>Processes:</strong> 0</p>
+
+                                
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-danger">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <strong>Virustotal</strong>
+                                <span class="badge bg-danger">MALICIOUS</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Risk Score:</strong> 23</p>
+                                <p><strong>Threat Level:</strong> LOW</p>
+                                <p><strong>Detections:</strong> 13</p>
+                                <p><strong>IOCs:</strong> 0</p>
+                                <p><strong>Network Activities:</strong> 0</p>
+                                <p><strong>Processes:</strong> 0</p>
+
+                                
+                                <p class="mb-1"><strong>Top Detections:</strong></p>
+                                <ul class="mb-2" style="font-size: 0.9rem;">
+                                    
+                                    <li>Bkav: W32.AIDetectMalware</li>
+                                    
+                                    <li>Cynet: Malicious (score: 100)</li>
+                                    
+                                    <li>Cylance: Unsafe</li>
+                                    
+                                    <li>Sangfor: Trojan.Win32.Save.a</li>
+                                    
+                                    <li>Elastic: malicious (high confidence)</li>
+                                    
+                                </ul>
+                                
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
 
         <!-- Detections -->
         
@@ -359,7 +430,7 @@
         <!-- Footer -->
         <div class="footer">
             <p>Generated by <strong>Malware Analysis Automation Pipeline</strong></p>
-            <p><small>All timestamps in UTC. Report generated 2026-04-05 16:31:01 UTC</small></p>
+            <p><small>All timestamps in UTC. Report generated 2026-04-06 18:03:42 UTC</small></p>
         </div>
     </div>
 

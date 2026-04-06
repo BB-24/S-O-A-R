@@ -1,0 +1,56 @@
+{
+  "summary": {
+    "file_name": "hello.c",
+    "hashes": {
+      "md5": "e82b1f6c734108ce6a01e55348c73cb3",
+      "sha1": "a50de1eb36439e30363767596baa913acd74544b",
+      "sha256": "6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164"
+    },
+    "consensus_verdict": "clean",
+    "threat_level": "informational",
+    "risk_score": 5.0,
+    "sources_count": 1,
+    "ioc_count": 0,
+    "network_activity_count": 0,
+    "process_count": 0,
+    "mitre_techniques_count": 0
+  },
+  "file_metadata": {
+    "name": "hello.c",
+    "hashes": {
+      "md5": "e82b1f6c734108ce6a01e55348c73cb3",
+      "sha1": "a50de1eb36439e30363767596baa913acd74544b",
+      "sha256": "6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164"
+    },
+    "primary_hash": "6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164"
+  },
+  "verdict_analysis": {
+    "consensus_verdict": "clean",
+    "verdicts_by_source": {
+      "virustotal": "clean"
+    },
+    "detections_by_source": {}
+  },
+  "risk_assessment": {
+    "overall_score": 5.0,
+    "threat_level": "informational",
+    "confidence": 0.5,
+    "reasoning": [
+      "Merged 1 reports",
+      "Average risk score: 5.0"
+    ],
+    "mitigations": []
+  },
+  "indicators_of_compromise": [],
+  "network_activity": [],
+  "process_execution": [],
+  "file_operations": [],
+  "mitre_attack_techniques": [],
+  "metadata": {
+    "merge_timestamp": "2026-04-06T10:39:55.766920",
+    "sources_count": 1,
+    "generators": [
+      "virustotal"
+    ]
+  }
+}

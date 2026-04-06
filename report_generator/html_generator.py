@@ -470,45 +470,252 @@ class HTMLGenerator:
         </div>
         {% endif %}
 
-        <!-- IOCs -->
+        <!-- IOCs with MISP Enrichment -->
         {% if iocs %}
         <div class="card">
             <div class="card-header">
                 🎯 Indicators of Compromise ({{ ioc_count }})
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-sm ioc-table">
-                        <thead>
-                            <tr>
-                                <th>Type</th>
-                                <th>Value</th>
-                                <th>Confidence</th>
-                                <th>Sources</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for ioc in iocs %}
-                            <tr>
-                                <td>
-                                    <span class="ioc-type-badge" style="
-                                        background-color: {% if ioc.ioc_type.value == 'ip' %}#b3e5fc{% elif ioc.ioc_type.value == 'domain' %}#c8e6c9{% elif ioc.ioc_type.value == 'url' %}#ffe0b2{% else %}#d1c4e9{% endif %};
-                                        color: {% if ioc.ioc_type.value == 'ip' %}#01579b{% elif ioc.ioc_type.value == 'domain' %}#1b5e20{% elif ioc.ioc_type.value == 'url' %}#e65100{% else %}#311b92{% endif %};
-                                    ">
-                                        {{ ioc.ioc_type.value | upper }}
-                                    </span>
-                                </td>
-                                <td><code style="font-size: 0.85rem;">{{ ioc.value }}</code></td>
-                                <td>{{ (ioc.confidence * 100) | int }}%</td>
-                                <td>
-                                    {% for source in ioc.source %}
-                                    <small class="badge bg-info">{{ source.value }}</small>
+                <ul class="nav nav-tabs mb-3" id="iotTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="all-iocs-tab" data-bs-toggle="tab" data-bs-target="#all-iocs" type="button" role="tab">
+                            All IOCs
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dns-queries-tab" data-bs-toggle="tab" data-bs-target="#dns-queries" type="button" role="tab">
+                            DNS Queries
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dropped-files-tab" data-bs-toggle="tab" data-bs-target="#dropped-files" type="button" role="tab">
+                            Dropped Files
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="registry-mods-tab" data-bs-toggle="tab" data-bs-target="#registry-mods" type="button" role="tab">
+                            Registry Modifications
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="process-behavior-tab" data-bs-toggle="tab" data-bs-target="#process-behavior" type="button" role="tab">
+                            Process Behavior
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="iocTabContent">
+                    <!-- All IOCs -->
+                    <div class="tab-pane fade show active" id="all-iocs" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table table-sm ioc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Value</th>
+                                        <th>Confidence</th>
+                                        <th>Threat Level</th>
+                                        <th>MISP Intelligence</th>
+                                        <th>Sources</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ioc in iocs %}
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: {% if ioc.ioc_type.value == 'ip' %}#b3e5fc{% elif ioc.ioc_type.value == 'domain' %}#c8e6c9{% elif ioc.ioc_type.value == 'url' %}#ffe0b2{% elif ioc.ioc_type.value == 'dns_query' %}#f0f4c3{% elif ioc.ioc_type.value == 'file_dropped' %}#ffccbc{% elif ioc.ioc_type.value == 'registry' %}#d0c4e9{% elif ioc.ioc_type.value == 'process_behavior' %}#bbdefb{% else %}#d1c4e9{% endif %};
+                                                color: {% if ioc.ioc_type.value == 'ip' %}#01579b{% elif ioc.ioc_type.value == 'domain' %}#1b5e20{% elif ioc.ioc_type.value == 'url' %}#e65100{% elif ioc.ioc_type.value == 'dns_query' %}#33691e{% elif ioc.ioc_type.value == 'file_dropped' %}#bf360c{% elif ioc.ioc_type.value == 'registry' %}#4a148c{% elif ioc.ioc_type.value == 'process_behavior' %}#0d47a1{% else %}#311b92{% endif %};
+                                            ">
+                                                {{ ioc.ioc_type.value | upper }}
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">{{ ioc.value }}</code></td>
+                                        <td>{{ (ioc.confidence * 100) | int }}%</td>
+                                        <td>
+                                            {% if ioc.misp_threat_level %}
+                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% elif ioc.misp_threat_level == 'medium' %}info{% else %}secondary{% endif %}">
+                                                {{ ioc.misp_threat_level | upper }}
+                                            </span>
+                                            {% else %}
+                                            <span class="badge bg-light text-dark">-</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if ioc.is_known_malicious %}
+                                            <span class="badge bg-danger">🔴 Malicious</span>
+                                            {% endif %}
+                                            {% if ioc.misp_tags %}
+                                            {% for tag in ioc.misp_tags[:3] %}
+                                            <small class="badge bg-secondary">{{ tag }}</small>
+                                            {% endfor %}
+                                            {% if ioc.misp_tags | length > 3 %}
+                                            <small class="badge bg-secondary">+{{ (ioc.misp_tags | length) - 3 }} more</small>
+                                            {% endif %}
+                                            {% else %}
+                                            <small class="text-muted">No MISP data</small>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% for source in ioc.source %}
+                                            <small class="badge bg-info">{{ source.value }}</small>
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
                                     {% endfor %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- DNS Queries -->
+                    <div class="tab-pane fade" id="dns-queries" role="tabpanel">
+                        {% set dns_iocs = iocs | selectattr('ioc_type.value', 'equalto', 'dns_query') | list %}
+                        {% if dns_iocs %}
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Query</th>
+                                        <th>Threat Level</th>
+                                        <th>Known Bad</th>
+                                        <th>Confidence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ioc in dns_iocs %}
+                                    <tr>
+                                        <td><code>{{ ioc.value }}</code></td>
+                                        <td>
+                                            {% if ioc.misp_threat_level %}
+                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% else %}info{% endif %}">{{ ioc.misp_threat_level | upper }}</span>
+                                            {% else %}
+                                            <span class="badge bg-light text-dark">-</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{% if ioc.is_known_malicious %}<span class="badge bg-danger">Yes</span>{% else %}<span class="badge bg-success">No</span>{% endif %}</td>
+                                        <td>{{ (ioc.confidence * 100) | int }}%</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <p class="text-muted">No DNS queries detected.</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Dropped Files -->
+                    <div class="tab-pane fade" id="dropped-files" role="tabpanel">
+                        {% set file_iocs = iocs | selectattr('ioc_type.value', 'equalto', 'file_dropped') | list %}
+                        {% if file_iocs %}
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>File Path</th>
+                                        <th>Process</th>
+                                        <th>Threat Level</th>
+                                        <th>Confidence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ioc in file_iocs %}
+                                    <tr>
+                                        <td><code style="font-size: 0.8rem;">{{ ioc.value }}</code></td>
+                                        <td><small>{{ ioc.process_name or 'Unknown' }}</small></td>
+                                        <td>
+                                            {% if ioc.misp_threat_level %}
+                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% else %}info{% endif %}">{{ ioc.misp_threat_level | upper }}</span>
+                                            {% else %}
+                                            <span class="badge bg-light text-dark">-</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ (ioc.confidence * 100) | int }}%</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <p class="text-muted">No dropped files detected.</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Registry Modifications -->
+                    <div class="tab-pane fade" id="registry-mods" role="tabpanel">
+                        {% set registry_iocs = iocs | selectattr('ioc_type.value', 'equalto', 'registry') | list %}
+                        {% if registry_iocs %}
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Registry Key / Value</th>
+                                        <th>Context</th>
+                                        <th>Threat Level</th>
+                                        <th>Confidence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ioc in registry_iocs %}
+                                    <tr>
+                                        <td><code style="font-size: 0.8rem;">{{ ioc.value }}</code></td>
+                                        <td><small>{{ ioc.operation_context or 'Write/Create' }}</small></td>
+                                        <td>
+                                            {% if ioc.misp_threat_level %}
+                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% else %}info{% endif %}">{{ ioc.misp_threat_level | upper }}</span>
+                                            {% else %}
+                                            <span class="badge bg-light text-dark">-</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ (ioc.confidence * 100) | int }}%</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <p class="text-muted">No registry modifications detected.</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Process Behavior -->
+                    <div class="tab-pane fade" id="process-behavior" role="tabpanel">
+                        {% set process_iocs = iocs | selectattr('ioc_type.value', 'equalto', 'process_behavior') | list %}
+                        {% if process_iocs %}
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Behavioral Pattern</th>
+                                        <th>Category</th>
+                                        <th>Threat Level</th>
+                                        <th>Confidence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ioc in process_iocs %}
+                                    <tr>
+                                        <td><code style="font-size: 0.8rem;">{{ ioc.value }}</code></td>
+                                        <td><small>{{ ioc.operation_context or 'Process Behavior' }}</small></td>
+                                        <td>
+                                            {% if ioc.misp_threat_level %}
+                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% else %}info{% endif %}">{{ ioc.misp_threat_level | upper }}</span>
+                                            {% else %}
+                                            <span class="badge bg-light text-dark">-</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ (ioc.confidence * 100) | int }}%</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <p class="text-muted">No suspicious process behavior detected.</p>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

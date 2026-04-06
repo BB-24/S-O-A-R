@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malware Analysis Report - hello.c</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --success-color: #28a745;
+            --info-color: #17a2b8;
+        }
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .verdict-badge {
+            display: inline-block;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .verdict-badge.danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        .verdict-badge.warning {
+            background-color: var(--warning-color);
+            color: black;
+        }
+        .verdict-badge.success {
+            background-color: var(--success-color);
+            color: white;
+        }
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .risk-score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+        }
+        .risk-meter {
+            width: 100%;
+            height: 30px;
+            background-color: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .risk-meter-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        table {
+            font-size: 0.95rem;
+        }
+        .ioc-table td {
+            padding: 10px;
+            word-break: break-all;
+        }
+        .ioc-type-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .hash-display {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            word-break: break-all;
+            border-left: 4px solid #667eea;
+        }
+        .mitre-badge {
+            display: inline-block;
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            color: #004085;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin: 5px 5px 5px 0;
+            font-size: 0.9rem;
+        }
+        .network-item {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .process-tree {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+        .footer {
+            text-align: center;
+            color: #6c757d;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <div class="header">
+            <h1>🔒 Malware Analysis Report</h1>
+            <p style="margin: 10px 0;">Generated: 2026-04-06 10:39:55 UTC</p>
+            <div class="verdict-badge success">
+                Verdict: CLEAN
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        📋 File Information
+                    </div>
+                    <div class="card-body">
+                        <p><strong>File Name:</strong> hello.c</p>
+                        <p><strong>Primary Hash (SHA256):</strong></p>
+                        <div class="hash-display">6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164</div>
+                        
+                        <p style="margin-top: 15px;"><strong>Additional Hashes:</strong></p>
+                        
+                        <p style="margin: 5px 0;">
+                            <strong>MD5:</strong><br>
+                            <span class="hash-display">e82b1f6c734108ce6a01e55348c73cb3</span>
+                        </p>
+                        
+                        <p style="margin: 5px 0;">
+                            <strong>SHA1:</strong><br>
+                            <span class="hash-display">a50de1eb36439e30363767596baa913acd74544b</span>
+                        </p>
+                        
+                        <p style="margin: 5px 0;">
+                            <strong>SHA256:</strong><br>
+                            <span class="hash-display">6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164</span>
+                        </p>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        ⚠️ Risk Score
+                    </div>
+                    <div class="card-body">
+                        <div class="risk-score-display secondary">
+                            5
+                        </div>
+                        <div class="risk-meter">
+                            <div class="risk-meter-fill secondary" 
+                                 style="width: 5.0%; background-color: #28a745;">
+                                INFORMATIONAL
+                            </div>
+                        </div>
+                        
+                        <p style="margin-top: 15px; font-size: 0.9rem;"><strong>Analysis:</strong></p>
+                        <ul style="font-size: 0.9rem; margin: 0;">
+                            
+                            <li>Merged 1 reports</li>
+                            
+                            <li>Average risk score: 5.0</li>
+                            
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verdict Summary -->
+        <div class="card">
+            <div class="card-header">
+                🔍 Analysis Verdict
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Source</th>
+                                <th>Verdict</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>virustotal</td>
+                                <td>
+                                    <span class="badge bg-success">
+                                        clean
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Source-Wise Presentation -->
+        
+        <div class="card">
+            <div class="card-header">
+                🧩 Source-Wise Dashboard View
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-secondary">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <strong>Hybrid Analysis</strong>
+                                <span class="badge bg-secondary">NO_DATA</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Risk Score:</strong> 0</p>
+                                <p><strong>Threat Level:</strong> NOT_AVAILABLE</p>
+                                <p><strong>Detections:</strong> 0</p>
+                                <p><strong>IOCs:</strong> 0</p>
+                                <p><strong>Network Activities:</strong> 0</p>
+                                <p><strong>Processes:</strong> 0</p>
+
+                                
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 border-success">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <strong>Virustotal</strong>
+                                <span class="badge bg-success">CLEAN</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Risk Score:</strong> 5</p>
+                                <p><strong>Threat Level:</strong> INFORMATIONAL</p>
+                                <p><strong>Detections:</strong> 0</p>
+                                <p><strong>IOCs:</strong> 0</p>
+                                <p><strong>Network Activities:</strong> 0</p>
+                                <p><strong>Processes:</strong> 0</p>
+
+                                
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Detections -->
+        
+
+        <!-- IOCs -->
+        
+
+        <!-- Network Activity -->
+        
+
+        <!-- Processes -->
+        
+
+        <!-- MITRE ATT&CK -->
+        
+
+        <!-- Metadata -->
+        <div class="card">
+            <div class="card-header">
+                ℹ️ Analysis Metadata
+            </div>
+            <div class="card-body">
+                <p><strong>Total Sources:</strong> 1</p>
+                <p><strong>Total IOCs:</strong> 0</p>
+                <p><strong>Network Connections:</strong> 0</p>
+                <p><strong>Processes:</strong> 0</p>
+                <p><strong>MITRE Techniques:</strong> 0</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Generated by <strong>Malware Analysis Automation Pipeline</strong></p>
+            <p><small>All timestamps in UTC. Report generated 2026-04-06 10:39:55 UTC</small></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -405,3 +405,638 @@ RuntimeError: No sandbox reports received
 2026-04-05 22:01:01,511 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
 2026-04-05 22:01:01,512 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
 2026-04-05 22:01:01,513 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 01:12:12,479 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 01:12:12,480 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 01:12:12,481 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 01:12:12,481 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 01:12:12,481 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 01:12:12,482 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 01:12:12,482 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 01:12:12,483 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 01:12:12,484 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 01:12:13,460 [ERROR] clients.virustotal: Failed to retrieve report: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/files/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 01:12:13,461 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/files/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 01:12:23,057 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 01:12:23,058 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 01:12:23,060 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 01:12:23,063 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 01:30:21,394 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 01:30:21,395 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 01:30:21,396 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 01:30:21,397 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 01:30:21,397 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 01:30:21,397 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 01:30:21,398 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 01:30:21,399 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 01:30:21,400 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 01:30:21,401 [INFO] MalwareAnalyzer:   Submitting to Triage...
+2026-04-06 01:30:22,113 [ERROR] clients.virustotal: Failed to retrieve report: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/files/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 01:30:22,114 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: 401 Client Error: Unauthorized for url: https://www.virustotal.com/api/v3/files/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 01:30:22,487 [ERROR] clients.triage: Failed to retrieve report: HTTPSConnectionPool(host='api.triage.com', port=443): Max retries exceeded with url: /v0/samples/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1018)')))
+2026-04-06 01:30:22,488 [WARNING] MalwareAnalyzer:     [!] Triage failed: HTTPSConnectionPool(host='api.triage.com', port=443): Max retries exceeded with url: /v0/samples/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1018)')))
+2026-04-06 01:30:33,103 [ERROR] clients.hybrid_analysis: Failed to retrieve report: 403 Client Error: Forbidden for url: https://hybrid-analysis.com/api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary
+2026-04-06 01:30:33,104 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: 403 Client Error: Forbidden for url: https://hybrid-analysis.com/api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary
+2026-04-06 01:30:33,106 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 01:30:33,110 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 01:33:49,641 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 01:33:49,642 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 01:33:49,644 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 01:33:49,644 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 01:33:49,644 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 01:33:49,645 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 01:33:49,645 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 01:33:49,646 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 01:33:49,647 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 01:33:49,648 [INFO] MalwareAnalyzer:   Submitting to Triage...
+2026-04-06 01:33:50,433 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: File not found: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 01:33:50,736 [ERROR] clients.triage: Failed to retrieve report: HTTPSConnectionPool(host='api.triage.com', port=443): Max retries exceeded with url: /v0/samples/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1018)')))
+2026-04-06 01:33:50,737 [WARNING] MalwareAnalyzer:     [!] Triage failed: HTTPSConnectionPool(host='api.triage.com', port=443): Max retries exceeded with url: /v0/samples/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1018)')))
+2026-04-06 01:34:01,541 [ERROR] clients.hybrid_analysis: Failed to retrieve report: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary
+2026-04-06 01:34:01,541 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary
+2026-04-06 01:34:01,543 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 01:34:01,545 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 02:05:33,354 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 02:05:33,356 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-06 02:05:33,357 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-06 02:05:33,357 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-06 02:05:33,358 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 02:05:33,358 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 02:05:33,358 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 02:05:33,360 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 02:05:33,360 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 02:05:49,456 [ERROR] clients.hybrid_analysis: Failed to retrieve report: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary
+2026-04-06 02:05:49,458 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary
+2026-04-06 02:05:49,460 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-06 02:05:49,460 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 02:05:49,461 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 02:05:49,462 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-06 02:05:49,462 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 02:05:49,463 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-06 02:05:49,464 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 02:05:49,466 [INFO] MalwareAnalyzer:   [+] Risk score: 90.0/10
+2026-04-06 02:05:49,467 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 02:05:49,467 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 02:05:49,468 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 02:05:49,469 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 02:05:49,470 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 02:05:49,476 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-06 02:05:49,481 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-06 02:05:49,482 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 14:10:09,017 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:10:09,019 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 14:10:09,020 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 14:10:09,020 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 14:10:09,020 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:10:09,020 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:10:09,020 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:10:09,023 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:10:09,026 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:10:10,897 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: File not found: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 14:10:19,377 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 14:10:19,380 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 14:10:19,382 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 14:10:19,389 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 14:21:35,575 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:21:35,576 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/malware.exe
+2026-04-06 14:21:35,576 [ERROR] MalwareAnalyzer: [-] Analysis failed: File not found: samples/malware.exe
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 124, in analyze
+    raise FileNotFoundError(f"File not found: {file_path}")
+FileNotFoundError: File not found: samples/malware.exe
+2026-04-06 14:21:35,578 [ERROR] __main__: Fatal error: File not found: samples/malware.exe
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 124, in analyze
+    raise FileNotFoundError(f"File not found: {file_path}")
+FileNotFoundError: File not found: samples/malware.exe
+2026-04-06 14:21:56,695 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:21:56,696 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-06 14:21:56,699 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-06 14:21:56,699 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-06 14:21:56,700 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:21:56,700 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:21:56,700 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:21:56,708 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:21:56,709 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:22:08,345 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 14:22:08,346 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 14:22:08,349 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-06 14:22:08,350 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 14:22:08,351 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 14:22:08,351 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-06 14:22:08,352 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 14:22:08,353 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-06 14:22:08,353 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 14:22:08,354 [INFO] MalwareAnalyzer:   [+] Risk score: 23.2/10
+2026-04-06 14:22:08,355 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 14:22:08,356 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 14:22:08,357 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 14:22:08,358 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 14:22:08,359 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 14:22:08,365 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-06 14:22:08,369 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-06 14:22:08,370 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 14:22:44,613 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:22:44,614 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 14:22:44,615 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 14:22:44,615 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 14:22:44,615 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:22:44,616 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:22:44,616 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:22:44,618 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:22:44,619 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:22:46,219 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: File not found: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 14:23:38,338 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hybrid-analysis.com', port=443) at 0x24f958f0b90>, 'Connection to www.hybrid-analysis.com timed out. (connect timeout=30)'))
+2026-04-06 14:23:38,339 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hybrid-analysis.com', port=443) at 0x24f958f0b90>, 'Connection to www.hybrid-analysis.com timed out. (connect timeout=30)'))
+2026-04-06 14:23:38,341 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 14:23:38,344 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 14:31:03,832 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:31:03,832 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell
+2026-04-06 14:31:03,833 [ERROR] MalwareAnalyzer: [-] Analysis failed: File not found: samples/reverse_shell
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 124, in analyze
+    raise FileNotFoundError(f"File not found: {file_path}")
+FileNotFoundError: File not found: samples/reverse_shell
+2026-04-06 14:31:03,835 [ERROR] __main__: Fatal error: File not found: samples/reverse_shell
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 124, in analyze
+    raise FileNotFoundError(f"File not found: {file_path}")
+FileNotFoundError: File not found: samples/reverse_shell
+2026-04-06 14:31:15,953 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:31:15,953 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-06 14:31:15,956 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-06 14:31:15,957 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-06 14:31:15,957 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:31:15,958 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:31:15,958 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:31:15,962 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:31:15,981 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:31:15,994 [ERROR] clients.virustotal: Failed to retrieve report: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878 (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 14:31:15,995 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878 (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 14:31:32,203 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 14:31:32,204 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878/summary (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 14:31:32,206 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 14:31:32,208 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 356, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 147, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 14:31:42,262 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:31:42,263 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-06 14:31:42,264 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-06 14:31:42,264 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-06 14:31:42,265 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:31:42,265 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:31:42,265 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:31:42,268 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:31:42,269 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:31:42,284 [ERROR] clients.virustotal: Failed to retrieve report: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262 (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 14:31:42,284 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262 (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 14:32:03,483 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 14:32:03,485 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 14:38:43,949 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:38:43,951 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 14:38:43,953 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 14:38:43,953 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 14:38:43,954 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:38:43,955 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:38:43,955 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:38:43,959 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:38:43,960 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:38:47,292 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: File not found: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 14:38:57,431 [ERROR] clients.hybrid_analysis: Failed to retrieve report: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary
+2026-04-06 14:38:58,150 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: 404 Client Error: Not Found for url: https://hybrid-analysis.com/api/v2/submit/file
+2026-04-06 14:38:58,151 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: 404 Client Error: Not Found for url: https://hybrid-analysis.com/api/v2/submit/file
+2026-04-06 14:38:58,155 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 182, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 14:38:58,161 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 412, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 182, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 14:39:50,646 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:39:50,646 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 14:39:50,647 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 14:39:50,647 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 14:39:50,648 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:39:50,648 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:39:50,648 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:39:50,651 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:39:50,653 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:40:03,786 [ERROR] clients.hybrid_analysis: Failed to retrieve report: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary
+2026-04-06 14:40:04,708 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/quick-scan/file
+2026-04-06 14:40:04,708 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/quick-scan/file
+2026-04-06 14:40:04,710 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-06 14:40:04,711 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 14:40:04,711 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 14:40:04,712 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-06 14:40:04,713 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 14:40:04,713 [ERROR] MalwareAnalyzer: [-] Analysis failed: float division by zero
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 193, in analyze
+    merged_report = self.merger.merge(unified_reports)
+  File "D:\NFSU (CSE)\S-O-A-R\merger.py", line 71, in merge
+    merged_risk = self._merge_risk(reports)
+  File "D:\NFSU (CSE)\S-O-A-R\merger.py", line 234, in _merge_risk
+    weighted_score = sum(s * c for s, c in zip(scores, confidences)) / sum(
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+        confidences
+        ~~~~~~~~~~~
+    )
+    ~
+ZeroDivisionError: float division by zero
+2026-04-06 14:40:04,723 [ERROR] __main__: Fatal error: float division by zero
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 426, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 193, in analyze
+    merged_report = self.merger.merge(unified_reports)
+  File "D:\NFSU (CSE)\S-O-A-R\merger.py", line 71, in merge
+    merged_risk = self._merge_risk(reports)
+  File "D:\NFSU (CSE)\S-O-A-R\merger.py", line 234, in _merge_risk
+    weighted_score = sum(s * c for s, c in zip(scores, confidences)) / sum(
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
+        confidences
+        ~~~~~~~~~~~
+    )
+    ~
+ZeroDivisionError: float division by zero
+2026-04-06 14:40:27,616 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:40:27,617 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 14:40:27,618 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 14:40:27,619 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 14:40:27,620 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:40:27,622 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:40:27,622 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:40:27,625 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:40:27,627 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:40:40,342 [ERROR] clients.hybrid_analysis: Failed to retrieve report: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/report/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164/summary
+2026-04-06 14:40:41,674 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/quick-scan/file
+2026-04-06 14:40:41,675 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/quick-scan/file
+2026-04-06 14:40:41,677 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-06 14:40:41,677 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 14:40:41,678 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 14:40:41,678 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-06 14:40:41,679 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 14:40:41,680 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-06 14:40:41,682 [INFO] MalwareAnalyzer:   [+] Consensus verdict: unknown
+2026-04-06 14:40:41,683 [INFO] MalwareAnalyzer:   [+] Risk score: 0.0/10
+2026-04-06 14:40:41,684 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 14:40:41,685 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 14:40:41,685 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 14:40:41,688 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 14:40:41,689 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 14:40:41,694 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hello_report.html
+2026-04-06 14:40:41,697 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hello_report.json
+2026-04-06 14:40:41,698 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 14:43:45,210 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:43:45,212 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-06 14:43:45,214 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-06 14:43:45,214 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-06 14:43:45,215 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:43:45,216 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:43:45,216 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:43:45,237 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:43:45,244 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:43:58,585 [ERROR] clients.hybrid_analysis: Failed to retrieve report: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/report/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262/summary
+2026-04-06 14:43:59,623 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/quick-scan/file
+2026-04-06 14:43:59,625 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/quick-scan/file
+2026-04-06 14:43:59,629 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-06 14:43:59,629 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 14:43:59,631 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 14:43:59,631 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-06 14:43:59,632 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 14:43:59,633 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-06 14:43:59,634 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 14:43:59,634 [INFO] MalwareAnalyzer:   [+] Risk score: 23.2/10
+2026-04-06 14:43:59,634 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 14:43:59,635 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 14:43:59,635 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 14:43:59,636 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 14:43:59,637 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 14:43:59,644 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-06 14:43:59,648 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-06 14:43:59,648 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 14:45:08,999 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:45:09,001 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-06 14:45:09,003 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-06 14:45:09,003 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-06 14:45:09,003 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:45:09,004 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:45:09,004 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:45:09,008 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:45:09,009 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:45:10,737 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-06 14:45:10,738 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 14:45:10,739 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-06 14:45:10,739 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 14:45:10,739 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-06 14:45:10,740 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 14:45:10,740 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-06 14:45:10,741 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 14:45:10,741 [INFO] MalwareAnalyzer:   [+] Risk score: 25.9/10
+2026-04-06 14:45:10,741 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 14:45:10,741 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 14:45:10,741 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 14:45:10,742 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 14:45:10,742 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 14:45:10,749 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\reverse_shell_report.html
+2026-04-06 14:45:10,752 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\reverse_shell_report.json
+2026-04-06 14:45:10,753 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 14:56:59,749 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:56:59,750 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-06 14:56:59,752 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-06 14:56:59,752 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-06 14:56:59,752 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:56:59,753 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:56:59,753 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:56:59,756 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:56:59,756 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:57:02,663 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-06 14:57:02,664 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 14:57:02,665 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-06 14:57:02,666 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 14:57:02,667 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-06 14:57:02,667 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 14:57:02,668 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-06 14:57:02,668 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 14:57:02,669 [INFO] MalwareAnalyzer:   [+] Risk score: 58.7/10
+2026-04-06 14:57:02,669 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 14:57:02,670 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 14:57:02,673 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 14:57:02,674 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 14:57:02,675 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 14:57:02,679 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\reverse_shell_report.html
+2026-04-06 14:57:02,683 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\reverse_shell_report.json
+2026-04-06 14:57:02,684 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 14:57:44,537 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 14:57:44,537 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-06 14:57:44,538 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-06 14:57:44,538 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-06 14:57:44,538 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 14:57:44,539 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 14:57:44,539 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 14:57:44,540 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 14:57:44,541 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 14:57:46,533 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-06 14:57:46,533 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 14:57:46,534 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-06 14:57:46,534 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 14:57:46,534 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-06 14:57:46,535 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 14:57:46,535 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-06 14:57:46,535 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 14:57:46,536 [INFO] MalwareAnalyzer:   [+] Risk score: 58.7/10
+2026-04-06 14:57:46,536 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 14:57:46,536 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 14:57:46,536 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 14:57:46,537 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 14:57:46,537 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 14:57:46,539 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\reverse_shell_report.html
+2026-04-06 14:57:46,541 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\reverse_shell_report.json
+2026-04-06 14:57:46,542 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 16:02:28,584 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 16:02:28,607 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-06 16:02:28,611 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-06 16:02:28,611 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-06 16:02:28,612 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 16:02:28,614 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 16:02:28,614 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 16:02:28,617 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 16:02:28,617 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 16:02:28,653 [ERROR] clients.virustotal: Failed to retrieve report: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files/7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262 (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:02:28,677 [ERROR] clients.virustotal: VirusTotal submission failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:02:28,677 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:02:39,257 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/search/hash?hash=7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262 (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:02:39,268 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:02:39,269 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:02:39,274 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 182, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 16:02:39,281 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 426, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 182, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 16:02:55,584 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 16:02:55,585 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-06 16:02:55,585 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-06 16:02:55,585 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-06 16:02:55,586 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 16:02:55,586 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 16:02:55,586 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 16:02:55,589 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 16:02:55,589 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 16:03:57,732 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/search/hash?hash=7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262 (Caused by NewConnectionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network"))
+2026-04-06 16:03:58,064 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:03:58,076 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:03:58,086 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-06 16:03:58,093 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 16:03:58,113 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 16:03:58,123 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-06 16:03:58,149 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 16:03:58,176 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-06 16:03:58,185 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 16:03:58,200 [INFO] MalwareAnalyzer:   [+] Risk score: 23.2/10
+2026-04-06 16:03:58,206 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 16:03:58,210 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 16:03:58,224 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 16:03:58,240 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 16:03:58,252 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 16:03:58,287 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-06 16:03:58,295 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-06 16:03:58,307 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 16:04:48,752 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 16:04:48,753 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 16:04:48,754 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 16:04:48,754 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 16:04:48,754 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 16:04:48,755 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 16:04:48,755 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 16:04:48,758 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 16:04:48,763 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 16:04:48,786 [ERROR] clients.virustotal: Failed to retrieve report: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:04:48,793 [ERROR] clients.virustotal: VirusTotal submission failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:04:48,793 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:04:58,816 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/search/hash?hash=6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:04:58,824 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:04:58,825 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by NameResolutionError("HTTPSConnection(host='www.hybrid-analysis.com', port=443): Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:04:58,827 [ERROR] MalwareAnalyzer: [-] Analysis failed: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 182, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 16:04:58,831 [ERROR] __main__: Fatal error: No sandbox reports received
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 426, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 182, in analyze
+    raise RuntimeError("No sandbox reports received")
+RuntimeError: No sandbox reports received
+2026-04-06 16:07:36,560 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 16:07:36,560 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 16:07:36,561 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 16:07:36,562 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 16:07:36,562 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 16:07:36,562 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 16:07:36,562 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 16:07:36,564 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 16:07:36,565 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 16:07:48,634 [ERROR] clients.virustotal: Failed to retrieve report: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files/6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:07:48,646 [ERROR] clients.virustotal: VirusTotal submission failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:07:48,646 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files (Caused by NameResolutionError("HTTPSConnection(host='www.virustotal.com', port=443): Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-06 16:08:12,937 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/search/hash?hash=6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 16:08:13,710 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 16:08:13,711 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 16:08:56,291 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 16:08:56,292 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 16:08:56,293 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 16:08:56,293 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 16:08:56,293 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 16:08:56,294 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 16:08:56,294 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 16:08:56,296 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 16:08:56,297 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 16:09:09,869 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/search/hash?hash=6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 16:09:10,605 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 16:09:10,605 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 16:09:10,606 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-06 16:09:10,607 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 16:09:10,607 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 16:09:10,607 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-06 16:09:10,607 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 16:09:10,608 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-06 16:09:10,608 [INFO] MalwareAnalyzer:   [+] Consensus verdict: clean
+2026-04-06 16:09:10,608 [INFO] MalwareAnalyzer:   [+] Risk score: 5.0/10
+2026-04-06 16:09:10,608 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 16:09:10,608 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 16:09:10,608 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 16:09:10,609 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 16:09:10,609 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 16:09:10,611 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hello_report.html
+2026-04-06 16:09:10,612 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hello_report.json
+2026-04-06 16:09:10,614 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 16:09:41,443 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 16:09:41,443 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-06 16:09:41,444 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-06 16:09:41,445 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-06 16:09:41,445 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 16:09:41,445 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 16:09:41,446 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 16:09:41,447 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 16:09:41,448 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 16:09:54,996 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/search/hash?hash=6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 16:09:55,763 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 16:09:55,764 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 16:09:55,765 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-06 16:09:55,765 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 16:09:55,765 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 16:09:55,766 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-06 16:09:55,766 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 16:09:55,766 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-06 16:09:55,767 [INFO] MalwareAnalyzer:   [+] Consensus verdict: clean
+2026-04-06 16:09:55,768 [INFO] MalwareAnalyzer:   [+] Risk score: 5.0/10
+2026-04-06 16:09:55,769 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 16:09:55,769 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 16:09:55,769 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 16:09:55,769 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 16:09:55,770 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 16:09:55,774 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hello_report.html
+2026-04-06 16:09:55,777 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hello_report.json
+2026-04-06 16:09:55,778 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 23:33:28,909 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 23:33:28,909 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-06 23:33:28,911 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-06 23:33:28,911 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-06 23:33:28,911 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 23:33:28,911 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 23:33:28,912 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 23:33:28,913 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 23:33:28,913 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 23:33:41,602 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/search/hash?hash=7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 23:33:42,155 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 23:33:42,156 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1018)')))
+2026-04-06 23:33:42,158 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-06 23:33:42,158 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 23:33:42,159 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 23:33:42,159 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-06 23:33:42,159 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 23:33:42,159 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-06 23:33:42,160 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 23:33:42,160 [INFO] MalwareAnalyzer:   [+] Risk score: 23.2/10
+2026-04-06 23:33:42,160 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 23:33:42,160 [INFO] correlator.correlation_engine: Starting correlation analysis
+2026-04-06 23:33:42,160 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 23:33:42,160 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 23:33:42,160 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 23:33:42,163 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-06 23:33:42,164 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-06 23:33:42,164 [INFO] MalwareAnalyzer: [+] Analysis complete!

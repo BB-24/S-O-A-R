@@ -1,14 +1,17 @@
 """
 Correlation engine for enriching merged reports with intelligence.
 
-Adds IOC extraction, MITRE ATT&CK mapping, and enrichment data.
+Adds IOC extraction, MITRE ATT&CK mapping, MISP enrichment, and behavioral analysis.
 """
 
 from typing import List, Dict, Set, Optional
 import logging
 import json
+import os
 
 from schema import MergedReport, IOC, IOCType, MitreAttackTechnique
+from correlator.misp_enricher import MISPEnricher
+from clients.misp_client import MISPClient
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +21,24 @@ class CorrelationEngine:
 
     def __init__(self):
         self.mitre_techniques = self._load_mitre_data()
+        self.misp_enricher = self._init_misp_enricher()
+
+    def _init_misp_enricher(self) -> MISPEnricher:
+        """Initialize MISP enricher if credentials are available."""
+        try:
+            misp_url = os.getenv('MISP_URL', '').strip()
+            misp_key = os.getenv('MISP_API_KEY', '').strip()
+            
+            if misp_url and misp_key and not misp_key.startswith('$'):
+                logger.info(f"Initializing MISP enrichment with {misp_url}")
+                misp_client = MISPClient(misp_url, misp_key)
+                return MISPEnricher(misp_client)
+            else:
+                logger.info("MISP credentials not configured, using behavioral extraction only")
+                return MISPEnricher(None)  # Graceful degradation
+        except Exception as e:
+            logger.warning(f"Failed to initialize MISP enricher: {e}, continuing without MISP")
+            return MISPEnricher(None)
 
     def correlate(self, merged_report: MergedReport) -> MergedReport:
         """
@@ -29,9 +50,15 @@ class CorrelationEngine:
         Returns:
             Enriched MergedReport
         """
-        logger.info("Starting correlation analysis")
+        logger.info("Starting correlation analysis with behavioral IOC extraction")
 
-        # Extract additional IOCs from behavioral data
+        # Extract behavioral IOCs (DNS, registry, dropped files, process behavior)
+        self.misp_enricher.extract_behavioral_iocs(merged_report)
+        
+        # Enrich IOCs with MISP intelligence
+        self.misp_enricher.enrich_iocs(merged_report)
+
+        # Additional extraction from basic behavior patterns
         self._extract_iocs_from_behavior(merged_report)
 
         # Map behavioral patterns to MITRE techniques
