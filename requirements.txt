@@ -13,6 +13,7 @@ MarkupSafe>=2.1.0         # Markup escaping
 
 # IOC Extraction
 ioc-finder>=0.3.0         # IOC pattern extraction
+yara-python>=4.3.0        # YARA malware detection and pattern matching
 
 # Optional: Security & Code Quality (Development)
 # pytest>=7.2.0             # Unit testing

@@ -174,7 +174,7 @@ class MalwareAnalyzer:
             
             # Step 5: Merge reports
             self.logger.info("[5/7] Merging multi-source reports")
-            merged_report = self.merger.merge(unified_reports)
+            merged_report = self.merger.merge(unified_reports, sample_path=file_path)
             self.logger.info(f"  [+] Consensus verdict: {merged_report.consensus_verdict}")
             if merged_report.risk:
                 self.logger.info(f"  [+] Risk score: {merged_report.risk.overall_score:.1f}/10")

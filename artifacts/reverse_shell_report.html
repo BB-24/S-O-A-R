@@ -140,7 +140,7 @@
         <!-- Header -->
         <div class="header">
             <h1>🔒 Malware Analysis Report</h1>
-            <p style="margin: 10px 0;">Generated: 2026-04-06 09:27:46 UTC</p>
+            <p style="margin: 10px 0;">Generated: 2026-04-08 18:11:53 UTC</p>
             <div class="verdict-badge danger">
                 Verdict: MALICIOUS
             </div>
@@ -187,12 +187,12 @@
                     </div>
                     <div class="card-body">
                         <div class="risk-score-display warning">
-                            58
+                            63
                         </div>
                         <div class="risk-meter">
                             <div class="risk-meter-fill warning" 
-                                 style="width: 58.722941720629045%; background-color: #ff9800;">
-                                MEDIUM
+                                 style="width: 63.44153498871332%; background-color: #ffc107;">
+                                HIGH
                             </div>
                         </div>
                         
@@ -201,7 +201,7 @@
                             
                             <li>Merged 2 reports</li>
                             
-                            <li>Average risk score: 58.7</li>
+                            <li>Average risk score: 63.4</li>
                             
                         </ul>
                         
@@ -294,9 +294,9 @@
                                 <span class="badge bg-danger">MALICIOUS</span>
                             </div>
                             <div class="card-body">
-                                <p><strong>Risk Score:</strong> 19</p>
-                                <p><strong>Threat Level:</strong> INFORMATIONAL</p>
-                                <p><strong>Detections:</strong> 11</p>
+                                <p><strong>Risk Score:</strong> 34</p>
+                                <p><strong>Threat Level:</strong> LOW</p>
+                                <p><strong>Detections:</strong> 19</p>
                                 <p><strong>IOCs:</strong> 0</p>
                                 <p><strong>Network Activities:</strong> 0</p>
                                 <p><strong>Processes:</strong> 0</p>
@@ -305,15 +305,15 @@
                                 <p class="mb-1"><strong>Top Detections:</strong></p>
                                 <ul class="mb-2" style="font-size: 0.9rem;">
                                     
+                                    <li>Lionic: Trojan.Win32.Generic.4!c</li>
+                                    
+                                    <li>Skyhigh: BehavesLike.Win32.Worm.nm</li>
+                                    
+                                    <li>Cylance: Unsafe</li>
+                                    
                                     <li>Sangfor: Trojan.Win32.Save.a</li>
                                     
-                                    <li>Elastic: malicious (moderate confidence)</li>
-                                    
-                                    <li>Paloalto: generic.ml</li>
-                                    
-                                    <li>SentinelOne: Static AI - Suspicious PE</li>
-                                    
-                                    <li>Sophos: Generic ML PUA (PUA)</li>
+                                    <li>Symantec: ML.Attribute.HighConfidence</li>
                                     
                                 </ul>
                                 
@@ -332,7 +332,7 @@
         
         <div class="card">
             <div class="card-header">
-                🛡️ AV Detections (12)
+                🛡️ AV Detections (20)
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -352,7 +352,27 @@
                             
                             <tr>
                                 <td><small>virustotal</small></td>
+                                <td><small>Lionic: Trojan.Win32.Generic.4!c</small></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><small>virustotal</small></td>
+                                <td><small>Skyhigh: BehavesLike.Win32.Worm.nm</small></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><small>virustotal</small></td>
+                                <td><small>Cylance: Unsafe</small></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><small>virustotal</small></td>
                                 <td><small>Sangfor: Trojan.Win32.Save.a</small></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><small>virustotal</small></td>
+                                <td><small>Symantec: ML.Attribute.HighConfidence</small></td>
                             </tr>
                             
                             <tr>
@@ -367,12 +387,27 @@
                             
                             <tr>
                                 <td><small>virustotal</small></td>
+                                <td><small>Sophos: Generic ML PUA (PUA)</small></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><small>virustotal</small></td>
+                                <td><small>Google: Detected</small></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><small>virustotal</small></td>
                                 <td><small>SentinelOne: Static AI - Suspicious PE</small></td>
                             </tr>
                             
                             <tr>
                                 <td><small>virustotal</small></td>
-                                <td><small>Sophos: Generic ML PUA (PUA)</small></td>
+                                <td><small>CTX: exe.trojan.wacatac</small></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><small>virustotal</small></td>
+                                <td><small>Varist: W32/ABTrojan.FBKD-7888</small></td>
                             </tr>
                             
                             <tr>
@@ -397,12 +432,17 @@
                             
                             <tr>
                                 <td><small>virustotal</small></td>
-                                <td><small>Cylance: Unsafe</small></td>
+                                <td><small>TrellixENS: Artemis!0C411B04B00F</small></td>
                             </tr>
                             
                             <tr>
                                 <td><small>virustotal</small></td>
                                 <td><small>MaxSecure: Trojan.Malware.300983.susgen</small></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><small>virustotal</small></td>
+                                <td><small>Fortinet: PossibleThreat.RF</small></td>
                             </tr>
                             
                         </tbody>
@@ -412,7 +452,258 @@
         </div>
         
 
-        <!-- IOCs -->
+        <!-- IOCs Overview -->
+        
+        <div class="card">
+            <div class="card-header">
+                🎯 Indicators of Compromise (8)
+            </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs mb-3" id="iotTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="all-iocs-tab" data-bs-toggle="tab" data-bs-target="#all-iocs" type="button" role="tab">
+                            All IOCs
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dns-queries-tab" data-bs-toggle="tab" data-bs-target="#dns-queries" type="button" role="tab">
+                            DNS Queries
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dropped-files-tab" data-bs-toggle="tab" data-bs-target="#dropped-files" type="button" role="tab">
+                            Dropped Files
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="registry-mods-tab" data-bs-toggle="tab" data-bs-target="#registry-mods" type="button" role="tab">
+                            Registry Modifications
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="process-behavior-tab" data-bs-toggle="tab" data-bs-target="#process-behavior" type="button" role="tab">
+                            Process Behavior
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="iocTabContent">
+                    <!-- All IOCs -->
+                    <div class="tab-pane fade show active" id="all-iocs" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table table-sm ioc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Value</th>
+                                        <th>Confidence</th>
+                                        <th>Sources</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #bbdefb;
+                                                color: #0d47a1;
+                                            ">
+                                                PROCESS_BEHAVIOR
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">Suspicious_Binary_Strings</code></td>
+                                        <td>95%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">MinGW.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">inGW.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">nGW.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">GW.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">W.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #b3e5fc;
+                                                color: #01579b;
+                                            ">
+                                                IP
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">10.9.1.6</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #b3e5fc;
+                                                color: #01579b;
+                                            ">
+                                                IP
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">0.9.1.6</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- DNS Queries -->
+                    <div class="tab-pane fade" id="dns-queries" role="tabpanel">
+                        
+                        
+                        <p class="text-muted">No DNS queries detected.</p>
+                        
+                    </div>
+
+                    <!-- Dropped Files -->
+                    <div class="tab-pane fade" id="dropped-files" role="tabpanel">
+                        
+                        
+                        <p class="text-muted">No dropped files detected.</p>
+                        
+                    </div>
+
+                    <!-- Registry Modifications -->
+                    <div class="tab-pane fade" id="registry-mods" role="tabpanel">
+                        
+                        
+                        <p class="text-muted">No registry modifications detected.</p>
+                        
+                    </div>
+
+                    <!-- Process Behavior -->
+                    <div class="tab-pane fade" id="process-behavior" role="tabpanel">
+                        
+                        
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Behavioral Pattern</th>
+                                        <th>Category</th>
+                                        <th>Confidence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td><code style="font-size: 0.8rem;">Suspicious_Binary_Strings</code></td>
+                                        <td><small>Process Behavior</small></td>
+                                        <td>95%</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
         
 
         <!-- Network Activity -->
@@ -431,7 +722,7 @@
             </div>
             <div class="card-body">
                 <p><strong>Total Sources:</strong> 2</p>
-                <p><strong>Total IOCs:</strong> 0</p>
+                <p><strong>Total IOCs:</strong> 8</p>
                 <p><strong>Network Connections:</strong> 0</p>
                 <p><strong>Processes:</strong> 0</p>
                 <p><strong>MITRE Techniques:</strong> 0</p>
@@ -441,7 +732,7 @@
         <!-- Footer -->
         <div class="footer">
             <p>Generated by <strong>Malware Analysis Automation Pipeline</strong></p>
-            <p><small>All timestamps in UTC. Report generated 2026-04-06 09:27:46 UTC</small></p>
+            <p><small>All timestamps in UTC. Report generated 2026-04-08 18:11:53 UTC</small></p>
         </div>
     </div>
 

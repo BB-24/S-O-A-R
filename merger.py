@@ -27,12 +27,13 @@ logger = logging.getLogger(__name__)
 class ReportMerger:
     """Merge multiple reports and deduplicate data."""
 
-    def merge(self, reports: List[UnifiedReport]) -> MergedReport:
+    def merge(self, reports: List[UnifiedReport], sample_path: str = None) -> MergedReport:
         """
         Merge multiple reports into a single consolidated report.
 
         Args:
             reports: List of UnifiedReport objects from different sources
+            sample_path: Path to the sample file being analyzed
 
         Returns:
             MergedReport with deduplicated and consolidated data
@@ -90,6 +91,7 @@ class ReportMerger:
             risk=merged_risk,
             source_reports=reports,
             merge_timestamp=datetime.utcnow(),
+            raw_metadata={'sample_path': sample_path} if sample_path else {},
         )
 
         logger.info(

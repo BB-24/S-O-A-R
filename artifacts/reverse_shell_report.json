@@ -7,10 +7,10 @@
       "sha256": "e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878"
     },
     "consensus_verdict": "malicious",
-    "threat_level": "medium",
-    "risk_score": 58.722941720629045,
+    "threat_level": "high",
+    "risk_score": 63.44153498871332,
     "sources_count": 2,
-    "ioc_count": 0,
+    "ioc_count": 8,
     "network_activity_count": 0,
     "process_count": 0,
     "mitre_techniques_count": 0
@@ -35,37 +35,182 @@
         "Hybrid Analysis Verdict: malicious"
       ],
       "virustotal": [
+        "Lionic: Trojan.Win32.Generic.4!c",
+        "Skyhigh: BehavesLike.Win32.Worm.nm",
+        "Cylance: Unsafe",
         "Sangfor: Trojan.Win32.Save.a",
+        "Symantec: ML.Attribute.HighConfidence",
         "Elastic: malicious (moderate confidence)",
         "Paloalto: generic.ml",
-        "SentinelOne: Static AI - Suspicious PE",
         "Sophos: Generic ML PUA (PUA)",
+        "Google: Detected",
+        "SentinelOne: Static AI - Suspicious PE",
+        "CTX: exe.trojan.wacatac",
+        "Varist: W32/ABTrojan.FBKD-7888",
         "Microsoft: Trojan:Win32/Wacatac.B!ml",
         "Cynet: Malicious (score: 100)",
         "VBA32: Trojan.Wacatac",
         "DeepInstinct: MALICIOUS",
-        "Cylance: Unsafe",
-        "MaxSecure: Trojan.Malware.300983.susgen"
+        "TrellixENS: Artemis!0C411B04B00F",
+        "MaxSecure: Trojan.Malware.300983.susgen",
+        "Fortinet: PossibleThreat.RF"
       ]
     }
   },
   "risk_assessment": {
-    "overall_score": 58.722941720629045,
-    "threat_level": "medium",
-    "confidence": 0.7111842105263158,
+    "overall_score": 63.44153498871332,
+    "threat_level": "high",
+    "confidence": 0.7383333333333333,
     "reasoning": [
       "Merged 2 reports",
-      "Average risk score: 58.7"
+      "Average risk score: 63.4"
     ],
     "mitigations": []
   },
-  "indicators_of_compromise": [],
+  "indicators_of_compromise": [
+    {
+      "type": "process_behavior",
+      "value": "Suspicious_Binary_Strings",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.95,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_match": true,
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_tags": [],
+        "yara_meta": {
+          "description": "Detects suspicious strings in binary samples",
+          "author": "SOAR Team",
+          "date": "2026-04-08",
+          "severity": "high",
+          "family": "Suspicious.Binary",
+          "tags": "binary suspicious behavioral"
+        },
+        "match_type": "malware_family"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "MinGW.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "inGW.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "nGW.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "GW.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "W.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "ip",
+      "value": "10.9.1.6",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$ip",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "ip",
+      "value": "0.9.1.6",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$ip",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    }
+  ],
   "network_activity": [],
   "process_execution": [],
   "file_operations": [],
   "mitre_attack_techniques": [],
   "metadata": {
-    "merge_timestamp": "2026-04-06T09:27:46.535575",
+    "merge_timestamp": "2026-04-08T18:11:53.914574",
     "sources_count": 2,
     "generators": [
       "hybrid_analysis",

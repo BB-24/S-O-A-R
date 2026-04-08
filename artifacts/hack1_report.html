@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malware Analysis Report - fcm4f.exe</title>
+    <title>Malware Analysis Report - 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
@@ -140,7 +140,7 @@
         <!-- Header -->
         <div class="header">
             <h1>🔒 Malware Analysis Report</h1>
-            <p style="margin: 10px 0;">Generated: 2026-04-06 18:03:42 UTC</p>
+            <p style="margin: 10px 0;">Generated: 2026-04-08 18:09:23 UTC</p>
             <div class="verdict-badge danger">
                 Verdict: MALICIOUS
             </div>
@@ -154,7 +154,7 @@
                         📋 File Information
                     </div>
                     <div class="card-body">
-                        <p><strong>File Name:</strong> fcm4f.exe</p>
+                        <p><strong>File Name:</strong> 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262</p>
                         <p><strong>Primary Hash (SHA256):</strong></p>
                         <div class="hash-display">7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262</div>
                         
@@ -186,22 +186,22 @@
                         ⚠️ Risk Score
                     </div>
                     <div class="card-body">
-                        <div class="risk-score-display info">
-                            23
+                        <div class="risk-score-display warning">
+                            59
                         </div>
                         <div class="risk-meter">
-                            <div class="risk-meter-fill info" 
-                                 style="width: 23.2%; background-color: #28a745;">
-                                LOW
+                            <div class="risk-meter-fill warning" 
+                                 style="width: 59.79285059578369%; background-color: #ff9800;">
+                                MEDIUM
                             </div>
                         </div>
                         
                         <p style="margin-top: 15px; font-size: 0.9rem;"><strong>Analysis:</strong></p>
                         <ul style="font-size: 0.9rem; margin: 0;">
                             
-                            <li>Merged 1 reports</li>
+                            <li>Merged 2 reports</li>
                             
-                            <li>Average risk score: 23.2</li>
+                            <li>Average risk score: 59.8</li>
                             
                         </ul>
                         
@@ -225,6 +225,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
+                            <tr>
+                                <td>hybrid_analysis</td>
+                                <td>
+                                    <span class="badge bg-danger">
+                                        malicious
+                                    </span>
+                                </td>
+                            </tr>
                             
                             <tr>
                                 <td>virustotal</td>
@@ -251,19 +260,26 @@
                 <div class="row">
                     
                     <div class="col-md-6 mb-3">
-                        <div class="card h-100 border-secondary">
+                        <div class="card h-100 border-danger">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <strong>Hybrid Analysis</strong>
-                                <span class="badge bg-secondary">NO_DATA</span>
+                                <span class="badge bg-danger">MALICIOUS</span>
                             </div>
                             <div class="card-body">
-                                <p><strong>Risk Score:</strong> 0</p>
-                                <p><strong>Threat Level:</strong> NOT_AVAILABLE</p>
-                                <p><strong>Detections:</strong> 0</p>
+                                <p><strong>Risk Score:</strong> 85</p>
+                                <p><strong>Threat Level:</strong> CRITICAL</p>
+                                <p><strong>Detections:</strong> 1</p>
                                 <p><strong>IOCs:</strong> 0</p>
                                 <p><strong>Network Activities:</strong> 0</p>
                                 <p><strong>Processes:</strong> 0</p>
 
+                                
+                                <p class="mb-1"><strong>Top Detections:</strong></p>
+                                <ul class="mb-2" style="font-size: 0.9rem;">
+                                    
+                                    <li>Hybrid Analysis Verdict: malicious</li>
+                                    
+                                </ul>
                                 
 
                                 
@@ -316,7 +332,7 @@
         
         <div class="card">
             <div class="card-header">
-                🛡️ AV Detections (13)
+                🛡️ AV Detections (14)
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -328,6 +344,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
+                            <tr>
+                                <td><small>hybrid_analysis</small></td>
+                                <td><small>Hybrid Analysis Verdict: malicious</small></td>
+                            </tr>
                             
                             <tr>
                                 <td><small>virustotal</small></td>
@@ -401,7 +422,222 @@
         </div>
         
 
-        <!-- IOCs -->
+        <!-- IOCs Overview -->
+        
+        <div class="card">
+            <div class="card-header">
+                🎯 Indicators of Compromise (6)
+            </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs mb-3" id="iotTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="all-iocs-tab" data-bs-toggle="tab" data-bs-target="#all-iocs" type="button" role="tab">
+                            All IOCs
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dns-queries-tab" data-bs-toggle="tab" data-bs-target="#dns-queries" type="button" role="tab">
+                            DNS Queries
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dropped-files-tab" data-bs-toggle="tab" data-bs-target="#dropped-files" type="button" role="tab">
+                            Dropped Files
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="registry-mods-tab" data-bs-toggle="tab" data-bs-target="#registry-mods" type="button" role="tab">
+                            Registry Modifications
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="process-behavior-tab" data-bs-toggle="tab" data-bs-target="#process-behavior" type="button" role="tab">
+                            Process Behavior
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="iocTabContent">
+                    <!-- All IOCs -->
+                    <div class="tab-pane fade show active" id="all-iocs" role="tabpanel">
+                        <div class="table-responsive">
+                            <table class="table table-sm ioc-table">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Value</th>
+                                        <th>Confidence</th>
+                                        <th>Sources</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #bbdefb;
+                                                color: #0d47a1;
+                                            ">
+                                                PROCESS_BEHAVIOR
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">Suspicious_Binary_Strings</code></td>
+                                        <td>95%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">MinGW.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">inGW.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">nGW.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">GW.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <span class="ioc-type-badge" style="
+                                                background-color: #c8e6c9;
+                                                color: #1b5e20;
+                                            ">
+                                                DOMAIN
+                                            </span>
+                                        </td>
+                                        <td><code style="font-size: 0.85rem;">W.org</code></td>
+                                        <td>85%</td>
+                                        <td>
+                                            
+                                            <small class="badge bg-info">behavioral</small>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- DNS Queries -->
+                    <div class="tab-pane fade" id="dns-queries" role="tabpanel">
+                        
+                        
+                        <p class="text-muted">No DNS queries detected.</p>
+                        
+                    </div>
+
+                    <!-- Dropped Files -->
+                    <div class="tab-pane fade" id="dropped-files" role="tabpanel">
+                        
+                        
+                        <p class="text-muted">No dropped files detected.</p>
+                        
+                    </div>
+
+                    <!-- Registry Modifications -->
+                    <div class="tab-pane fade" id="registry-mods" role="tabpanel">
+                        
+                        
+                        <p class="text-muted">No registry modifications detected.</p>
+                        
+                    </div>
+
+                    <!-- Process Behavior -->
+                    <div class="tab-pane fade" id="process-behavior" role="tabpanel">
+                        
+                        
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Behavioral Pattern</th>
+                                        <th>Category</th>
+                                        <th>Confidence</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td><code style="font-size: 0.8rem;">Suspicious_Binary_Strings</code></td>
+                                        <td><small>Process Behavior</small></td>
+                                        <td>95%</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
         
 
         <!-- Network Activity -->
@@ -419,8 +655,8 @@
                 ℹ️ Analysis Metadata
             </div>
             <div class="card-body">
-                <p><strong>Total Sources:</strong> 1</p>
-                <p><strong>Total IOCs:</strong> 0</p>
+                <p><strong>Total Sources:</strong> 2</p>
+                <p><strong>Total IOCs:</strong> 6</p>
                 <p><strong>Network Connections:</strong> 0</p>
                 <p><strong>Processes:</strong> 0</p>
                 <p><strong>MITRE Techniques:</strong> 0</p>
@@ -430,7 +666,7 @@
         <!-- Footer -->
         <div class="footer">
             <p>Generated by <strong>Malware Analysis Automation Pipeline</strong></p>
-            <p><small>All timestamps in UTC. Report generated 2026-04-06 18:03:42 UTC</small></p>
+            <p><small>All timestamps in UTC. Report generated 2026-04-08 18:09:23 UTC</small></p>
         </div>
     </div>
 

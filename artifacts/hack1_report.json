@@ -1,22 +1,22 @@
 {
   "summary": {
-    "file_name": "fcm4f.exe",
+    "file_name": "7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262",
     "hashes": {
       "md5": "b044eacac4f7fed71178fc705bea208b",
       "sha1": "718260f314c1de9225097bf462406b93b903845c",
       "sha256": "7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262"
     },
     "consensus_verdict": "malicious",
-    "threat_level": "low",
-    "risk_score": 23.2,
-    "sources_count": 1,
-    "ioc_count": 0,
+    "threat_level": "medium",
+    "risk_score": 59.79285059578369,
+    "sources_count": 2,
+    "ioc_count": 6,
     "network_activity_count": 0,
     "process_count": 0,
     "mitre_techniques_count": 0
   },
   "file_metadata": {
-    "name": "fcm4f.exe",
+    "name": "7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262",
     "hashes": {
       "md5": "b044eacac4f7fed71178fc705bea208b",
       "sha1": "718260f314c1de9225097bf462406b93b903845c",
@@ -27,9 +27,13 @@
   "verdict_analysis": {
     "consensus_verdict": "malicious",
     "verdicts_by_source": {
+      "hybrid_analysis": "malicious",
       "virustotal": "malicious"
     },
     "detections_by_source": {
+      "hybrid_analysis": [
+        "Hybrid Analysis Verdict: malicious"
+      ],
       "virustotal": [
         "Bkav: W32.AIDetectMalware",
         "Cynet: Malicious (score: 100)",
@@ -48,24 +52,130 @@
     }
   },
   "risk_assessment": {
-    "overall_score": 23.2,
-    "threat_level": "low",
-    "confidence": 0.5855263157894737,
+    "overall_score": 59.79285059578369,
+    "threat_level": "medium",
+    "confidence": 0.7177631578947368,
     "reasoning": [
-      "Merged 1 reports",
-      "Average risk score: 23.2"
+      "Merged 2 reports",
+      "Average risk score: 59.8"
     ],
     "mitigations": []
   },
-  "indicators_of_compromise": [],
+  "indicators_of_compromise": [
+    {
+      "type": "process_behavior",
+      "value": "Suspicious_Binary_Strings",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.95,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_match": true,
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_tags": [],
+        "yara_meta": {
+          "description": "Detects suspicious strings in binary samples",
+          "author": "SOAR Team",
+          "date": "2026-04-08",
+          "severity": "high",
+          "family": "Suspicious.Binary",
+          "tags": "binary suspicious behavioral"
+        },
+        "match_type": "malware_family"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "MinGW.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "inGW.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "nGW.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "GW.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    },
+    {
+      "type": "domain",
+      "value": "W.org",
+      "sources": [
+        "behavioral"
+      ],
+      "confidence": 0.85,
+      "first_seen": null,
+      "last_seen": null,
+      "metadata": {
+        "yara_rule": "Suspicious_Binary_Strings",
+        "yara_identifier": "$domain",
+        "yara_tags": [],
+        "extraction_method": "yara_string"
+      }
+    }
+  ],
   "network_activity": [],
   "process_execution": [],
   "file_operations": [],
   "mitre_attack_techniques": [],
   "metadata": {
-    "merge_timestamp": "2026-04-06T18:03:42.159819",
-    "sources_count": 1,
+    "merge_timestamp": "2026-04-08T18:09:23.235904",
+    "sources_count": 2,
     "generators": [
+      "hybrid_analysis",
       "virustotal"
     ]
   }

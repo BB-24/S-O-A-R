@@ -470,7 +470,7 @@ class HTMLGenerator:
         </div>
         {% endif %}
 
-        <!-- IOCs with MISP Enrichment -->
+        <!-- IOCs Overview -->
         {% if iocs %}
         <div class="card">
             <div class="card-header">
@@ -515,8 +515,6 @@ class HTMLGenerator:
                                         <th>Type</th>
                                         <th>Value</th>
                                         <th>Confidence</th>
-                                        <th>Threat Level</th>
-                                        <th>MISP Intelligence</th>
                                         <th>Sources</th>
                                     </tr>
                                 </thead>
@@ -533,30 +531,6 @@ class HTMLGenerator:
                                         </td>
                                         <td><code style="font-size: 0.85rem;">{{ ioc.value }}</code></td>
                                         <td>{{ (ioc.confidence * 100) | int }}%</td>
-                                        <td>
-                                            {% if ioc.misp_threat_level %}
-                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% elif ioc.misp_threat_level == 'medium' %}info{% else %}secondary{% endif %}">
-                                                {{ ioc.misp_threat_level | upper }}
-                                            </span>
-                                            {% else %}
-                                            <span class="badge bg-light text-dark">-</span>
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if ioc.is_known_malicious %}
-                                            <span class="badge bg-danger">🔴 Malicious</span>
-                                            {% endif %}
-                                            {% if ioc.misp_tags %}
-                                            {% for tag in ioc.misp_tags[:3] %}
-                                            <small class="badge bg-secondary">{{ tag }}</small>
-                                            {% endfor %}
-                                            {% if ioc.misp_tags | length > 3 %}
-                                            <small class="badge bg-secondary">+{{ (ioc.misp_tags | length) - 3 }} more</small>
-                                            {% endif %}
-                                            {% else %}
-                                            <small class="text-muted">No MISP data</small>
-                                            {% endif %}
-                                        </td>
                                         <td>
                                             {% for source in ioc.source %}
                                             <small class="badge bg-info">{{ source.value }}</small>
@@ -578,8 +552,6 @@ class HTMLGenerator:
                                 <thead>
                                     <tr>
                                         <th>Query</th>
-                                        <th>Threat Level</th>
-                                        <th>Known Bad</th>
                                         <th>Confidence</th>
                                     </tr>
                                 </thead>
@@ -587,14 +559,6 @@ class HTMLGenerator:
                                     {% for ioc in dns_iocs %}
                                     <tr>
                                         <td><code>{{ ioc.value }}</code></td>
-                                        <td>
-                                            {% if ioc.misp_threat_level %}
-                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% else %}info{% endif %}">{{ ioc.misp_threat_level | upper }}</span>
-                                            {% else %}
-                                            <span class="badge bg-light text-dark">-</span>
-                                            {% endif %}
-                                        </td>
-                                        <td>{% if ioc.is_known_malicious %}<span class="badge bg-danger">Yes</span>{% else %}<span class="badge bg-success">No</span>{% endif %}</td>
                                         <td>{{ (ioc.confidence * 100) | int }}%</td>
                                     </tr>
                                     {% endfor %}
@@ -616,7 +580,6 @@ class HTMLGenerator:
                                     <tr>
                                         <th>File Path</th>
                                         <th>Process</th>
-                                        <th>Threat Level</th>
                                         <th>Confidence</th>
                                     </tr>
                                 </thead>
@@ -625,13 +588,6 @@ class HTMLGenerator:
                                     <tr>
                                         <td><code style="font-size: 0.8rem;">{{ ioc.value }}</code></td>
                                         <td><small>{{ ioc.process_name or 'Unknown' }}</small></td>
-                                        <td>
-                                            {% if ioc.misp_threat_level %}
-                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% else %}info{% endif %}">{{ ioc.misp_threat_level | upper }}</span>
-                                            {% else %}
-                                            <span class="badge bg-light text-dark">-</span>
-                                            {% endif %}
-                                        </td>
                                         <td>{{ (ioc.confidence * 100) | int }}%</td>
                                     </tr>
                                     {% endfor %}
@@ -653,7 +609,6 @@ class HTMLGenerator:
                                     <tr>
                                         <th>Registry Key / Value</th>
                                         <th>Context</th>
-                                        <th>Threat Level</th>
                                         <th>Confidence</th>
                                     </tr>
                                 </thead>
@@ -662,13 +617,6 @@ class HTMLGenerator:
                                     <tr>
                                         <td><code style="font-size: 0.8rem;">{{ ioc.value }}</code></td>
                                         <td><small>{{ ioc.operation_context or 'Write/Create' }}</small></td>
-                                        <td>
-                                            {% if ioc.misp_threat_level %}
-                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% else %}info{% endif %}">{{ ioc.misp_threat_level | upper }}</span>
-                                            {% else %}
-                                            <span class="badge bg-light text-dark">-</span>
-                                            {% endif %}
-                                        </td>
                                         <td>{{ (ioc.confidence * 100) | int }}%</td>
                                     </tr>
                                     {% endfor %}
@@ -690,7 +638,6 @@ class HTMLGenerator:
                                     <tr>
                                         <th>Behavioral Pattern</th>
                                         <th>Category</th>
-                                        <th>Threat Level</th>
                                         <th>Confidence</th>
                                     </tr>
                                 </thead>
@@ -699,13 +646,6 @@ class HTMLGenerator:
                                     <tr>
                                         <td><code style="font-size: 0.8rem;">{{ ioc.value }}</code></td>
                                         <td><small>{{ ioc.operation_context or 'Process Behavior' }}</small></td>
-                                        <td>
-                                            {% if ioc.misp_threat_level %}
-                                            <span class="badge bg-{% if ioc.misp_threat_level == 'critical' %}danger{% elif ioc.misp_threat_level == 'high' %}warning{% else %}info{% endif %}">{{ ioc.misp_threat_level | upper }}</span>
-                                            {% else %}
-                                            <span class="badge bg-light text-dark">-</span>
-                                            {% endif %}
-                                        </td>
                                         <td>{{ (ioc.confidence * 100) | int }}%</td>
                                     </tr>
                                     {% endfor %}

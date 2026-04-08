@@ -1,7 +1,7 @@
 """
 Correlation engine for enriching merged reports with intelligence.
 
-Adds IOC extraction, MITRE ATT&CK mapping, MISP enrichment, and behavioral analysis.
+Adds IOC extraction, MITRE ATT&CK mapping, YARA scanning, and behavioral analysis.
 """
 
 from typing import List, Dict, Set, Optional
@@ -10,8 +10,7 @@ import json
 import os
 
 from schema import MergedReport, IOC, IOCType, MitreAttackTechnique
-from correlator.misp_enricher import MISPEnricher
-from clients.misp_client import MISPClient
+from correlator.yara_scanner import YARAScanner
 
 logger = logging.getLogger(__name__)
 
@@ -21,24 +20,22 @@ class CorrelationEngine:
 
     def __init__(self):
         self.mitre_techniques = self._load_mitre_data()
-        self.misp_enricher = self._init_misp_enricher()
+        self.yara_scanner = self._init_yara_scanner()
 
-    def _init_misp_enricher(self) -> MISPEnricher:
-        """Initialize MISP enricher if credentials are available."""
+    def _init_yara_scanner(self) -> Optional[YARAScanner]:
+        """Initialize YARA scanner if rules are available."""
         try:
-            misp_url = os.getenv('MISP_URL', '').strip()
-            misp_key = os.getenv('MISP_API_KEY', '').strip()
-            
-            if misp_url and misp_key and not misp_key.startswith('$'):
-                logger.info(f"Initializing MISP enrichment with {misp_url}")
-                misp_client = MISPClient(misp_url, misp_key)
-                return MISPEnricher(misp_client)
+            yara_rules_path = os.getenv('YARA_RULES_PATH')
+            scanner = YARAScanner(rules_path=yara_rules_path)
+            if scanner.rules:
+                logger.info("YARA scanner initialized successfully")
+                return scanner
             else:
-                logger.info("MISP credentials not configured, using behavioral extraction only")
-                return MISPEnricher(None)  # Graceful degradation
+                logger.info("YARA rules not configured, YARA scanning disabled")
+                return None
         except Exception as e:
-            logger.warning(f"Failed to initialize MISP enricher: {e}, continuing without MISP")
-            return MISPEnricher(None)
+            logger.warning(f"Failed to initialize YARA scanner: {e}")
+            return None
 
     def correlate(self, merged_report: MergedReport) -> MergedReport:
         """
@@ -50,15 +47,13 @@ class CorrelationEngine:
         Returns:
             Enriched MergedReport
         """
-        logger.info("Starting correlation analysis with behavioral IOC extraction")
+        logger.info("Starting correlation analysis with behavioral IOC extraction and YARA scanning")
+
+        # Perform YARA scanning if available
+        if self.yara_scanner:
+            self._perform_yara_scanning(merged_report)
 
         # Extract behavioral IOCs (DNS, registry, dropped files, process behavior)
-        self.misp_enricher.extract_behavioral_iocs(merged_report)
-        
-        # Enrich IOCs with MISP intelligence
-        self.misp_enricher.enrich_iocs(merged_report)
-
-        # Additional extraction from basic behavior patterns
         self._extract_iocs_from_behavior(merged_report)
 
         # Map behavioral patterns to MITRE techniques
@@ -71,6 +66,69 @@ class CorrelationEngine:
                    f"{len(merged_report.mitre_techniques)} MITRE techniques")
 
         return merged_report
+
+    def _perform_yara_scanning(self, report: MergedReport) -> None:
+        """
+        Perform YARA scanning on sample and behavioral data.
+
+        Args:
+            report: Report to enrich with YARA matches
+        """
+        if not self.yara_scanner:
+            return
+
+        logger.debug("Starting YARA scanning")
+        yara_iocs_count = 0
+
+        # Get sample file path from raw metadata if available
+        sample_path = report.raw_metadata.get('sample_path') if hasattr(report, 'raw_metadata') else None
+
+        if sample_path and os.path.exists(sample_path):
+            try:
+                logger.debug(f"Scanning sample with YARA: {sample_path}")
+                matches = self.yara_scanner.scan_file(sample_path)
+                iocs = self.yara_scanner.extract_iocs_from_matches(matches)
+
+                # Add YARA-extracted IOCs to report
+                existing_iocs = {(ioc.ioc_type, ioc.value) for ioc in report.iocs}
+                for ioc in iocs:
+                    ioc_key = (ioc.ioc_type, ioc.value)
+                    if ioc_key not in existing_iocs:
+                        report.iocs.append(ioc)
+                        existing_iocs.add(ioc_key)
+                        yara_iocs_count += 1
+
+                if matches:
+                    logger.debug(f"YARA scan found {len(matches)} matches")
+
+            except Exception as e:
+                logger.error(f"Error during YARA scanning: {e}")
+
+        # Also scan detections/process behavior text for embedded IOCs
+        # Flatten detection lists from all sources
+        all_detections = ' '.join(
+            detection 
+            for src_detections in report.all_detections.values() 
+            for detection in src_detections
+        )
+        if all_detections:
+            try:
+                matches = self.yara_scanner.scan_string(all_detections.encode('utf-8', errors='ignore'))
+                iocs = self.yara_scanner.extract_iocs_from_matches(matches)
+
+                existing_iocs = {(ioc.ioc_type, ioc.value) for ioc in report.iocs}
+                for ioc in iocs:
+                    ioc_key = (ioc.ioc_type, ioc.value)
+                    if ioc_key not in existing_iocs:
+                        report.iocs.append(ioc)
+                        existing_iocs.add(ioc_key)
+                        yara_iocs_count += 1
+
+            except Exception as e:
+                logger.debug(f"Error scanning detections with YARA: {e}")
+
+        if yara_iocs_count > 0:
+            logger.info(f"YARA scanning extracted {yara_iocs_count} additional IOCs")
 
     def _extract_iocs_from_behavior(self, report: MergedReport) -> None:
         """Extract IOCs from behavioral data."""

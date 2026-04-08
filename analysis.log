@@ -1040,3 +1040,583 @@ RuntimeError: No sandbox reports received
 2026-04-06 23:33:42,163 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
 2026-04-06 23:33:42,164 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
 2026-04-06 23:33:42,164 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 23:51:05,721 [INFO] correlator.correlation_engine: MISP credentials not configured, using behavioral extraction only
+2026-04-06 23:51:05,759 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 23:51:05,759 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-06 23:51:05,760 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-06 23:51:05,760 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-06 23:51:05,760 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 23:51:05,761 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 23:51:05,761 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 23:51:05,762 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 23:51:05,763 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 23:51:08,066 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-06 23:51:08,067 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 23:51:08,067 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-06 23:51:08,067 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 23:51:08,068 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-06 23:51:08,068 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 23:51:08,068 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-06 23:51:08,069 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 23:51:08,069 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-06 23:51:08,069 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 23:51:08,070 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction
+2026-04-06 23:51:08,070 [INFO] correlator.misp_enricher: Extracting behavioral IOCs from network, file, and process activity
+2026-04-06 23:51:08,070 [INFO] correlator.misp_enricher: Behavioral extraction complete: 0 total IOCs
+2026-04-06 23:51:08,070 [WARNING] correlator.misp_enricher: MISP not available, skipping enrichment
+2026-04-06 23:51:08,070 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 23:51:08,071 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 23:51:08,071 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 23:51:08,073 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-06 23:51:08,074 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-06 23:51:08,074 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-06 23:52:46,936 [INFO] correlator.correlation_engine: MISP credentials not configured, using behavioral extraction only
+2026-04-06 23:52:46,974 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-06 23:52:46,974 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-06 23:52:46,975 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-06 23:52:46,975 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-06 23:52:46,976 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-06 23:52:46,976 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-06 23:52:46,976 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-06 23:52:46,977 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-06 23:52:46,978 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-06 23:52:49,706 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-06 23:52:49,707 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-06 23:52:49,707 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-06 23:52:49,708 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-06 23:52:49,708 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-06 23:52:49,708 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-06 23:52:49,709 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-06 23:52:49,709 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-06 23:52:49,709 [INFO] MalwareAnalyzer:   [+] Risk score: 60.9/10
+2026-04-06 23:52:49,710 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-06 23:52:49,710 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction
+2026-04-06 23:52:49,710 [INFO] correlator.misp_enricher: Extracting behavioral IOCs from network, file, and process activity
+2026-04-06 23:52:49,710 [INFO] correlator.misp_enricher: Behavioral extraction complete: 0 total IOCs
+2026-04-06 23:52:49,711 [WARNING] correlator.misp_enricher: MISP not available, skipping enrichment
+2026-04-06 23:52:49,711 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-06 23:52:49,711 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-06 23:52:49,711 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-06 23:52:49,713 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\reverse_shell_report.html
+2026-04-06 23:52:49,714 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\reverse_shell_report.json
+2026-04-06 23:52:49,715 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-07 10:19:36,524 [INFO] correlator.correlation_engine: MISP credentials not configured, using behavioral extraction only
+2026-04-07 10:19:36,614 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-07 10:19:36,615 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-07 10:19:36,617 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-07 10:19:36,618 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-07 10:19:36,618 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-07 10:19:36,692 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-07 10:19:36,768 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-07 10:19:36,883 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-07 10:19:36,934 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-07 10:19:49,146 [ERROR] clients.virustotal: Failed to retrieve report: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files/e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000287ABE0C7D0>: Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-07 10:20:01,238 [ERROR] clients.virustotal: VirusTotal submission failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000287ABE0DBD0>: Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-07 10:20:01,273 [WARNING] MalwareAnalyzer:     [!] VirusTotal failed: HTTPSConnectionPool(host='www.virustotal.com', port=443): Max retries exceeded with url: /api/v3/files (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000287ABE0DBD0>: Failed to resolve 'www.virustotal.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-07 10:20:35,673 [ERROR] clients.hybrid_analysis: Failed to retrieve report: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/search/hash?hash=e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000287ABE0F250>: Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-07 10:20:35,708 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000287ABE0F9D0>: Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-07 10:20:35,712 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: HTTPSConnectionPool(host='www.hybrid-analysis.com', port=443): Max retries exceeded with url: /api/v2/quick-scan/file (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x00000287ABE0F9D0>: Failed to resolve 'www.hybrid-analysis.com' ([Errno 11001] getaddrinfo failed)"))
+2026-04-07 10:22:41,985 [INFO] correlator.correlation_engine: MISP credentials not configured, using behavioral extraction only
+2026-04-07 10:22:42,090 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-07 10:22:42,090 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-07 10:22:42,093 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-07 10:22:42,094 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-07 10:22:42,095 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-07 10:22:42,097 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-07 10:22:42,097 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-07 10:22:42,106 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-07 10:22:42,111 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-07 11:04:22,308 [INFO] correlator.correlation_engine: MISP credentials not configured, using behavioral extraction only
+2026-04-07 11:04:22,382 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-07 11:04:22,383 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-07 11:04:22,385 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-07 11:04:22,385 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-07 11:04:22,385 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-07 11:04:22,386 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-07 11:04:22,386 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-07 11:04:22,387 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-07 11:04:22,388 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-07 11:04:29,309 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-07 11:04:29,309 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-07 11:04:29,310 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-07 11:04:29,310 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-07 11:04:29,310 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-07 11:04:29,311 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-07 11:04:29,311 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-07 11:04:29,312 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-07 11:04:29,312 [INFO] MalwareAnalyzer:   [+] Risk score: 60.9/10
+2026-04-07 11:04:29,312 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-07 11:04:29,312 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction
+2026-04-07 11:04:29,312 [INFO] correlator.misp_enricher: Extracting behavioral IOCs from network, file, and process activity
+2026-04-07 11:04:29,313 [INFO] correlator.misp_enricher: Behavioral extraction complete: 0 total IOCs
+2026-04-07 11:04:29,313 [WARNING] correlator.misp_enricher: MISP not available, skipping enrichment
+2026-04-07 11:04:29,313 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-07 11:04:29,313 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-07 11:04:29,313 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-07 11:04:29,319 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\reverse_shell_report.html
+2026-04-07 11:04:29,323 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\reverse_shell_report.json
+2026-04-07 11:04:29,324 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-07 12:42:43,483 [INFO] correlator.correlation_engine: MISP credentials not configured, using behavioral extraction only
+2026-04-07 12:42:43,565 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-07 12:42:43,569 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-07 12:42:43,580 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-07 12:42:43,580 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-07 12:42:43,581 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-07 12:42:43,583 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-07 12:42:43,584 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-07 12:42:43,600 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-07 12:42:43,607 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-07 12:42:44,896 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-07 12:42:44,897 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-07 12:42:44,898 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-07 12:42:44,898 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-07 12:42:44,898 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-07 12:42:44,899 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-07 12:42:44,899 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-07 12:42:44,900 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-07 12:42:44,901 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-07 12:42:44,902 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-07 12:42:44,903 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction
+2026-04-07 12:42:44,904 [INFO] correlator.misp_enricher: Extracting behavioral IOCs from network, file, and process activity
+2026-04-07 12:42:44,905 [INFO] correlator.misp_enricher: Behavioral extraction complete: 0 total IOCs
+2026-04-07 12:42:44,905 [WARNING] correlator.misp_enricher: MISP not available, skipping enrichment
+2026-04-07 12:42:44,905 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-07 12:42:44,906 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-07 12:42:44,906 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-07 12:42:44,910 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-07 12:42:44,914 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-07 12:42:44,915 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 20:17:35,072 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 20:17:35,072 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 20:17:35,073 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 20:17:35,074 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 20:17:35,074 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 20:17:35,074 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 20:17:35,074 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 20:17:35,076 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 20:17:35,076 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 20:17:37,331 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 20:17:37,331 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 20:17:37,332 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 20:17:37,333 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 20:17:37,333 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 20:17:37,334 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 20:17:37,334 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 20:17:37,335 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 20:17:37,335 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 20:17:37,335 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 20:17:37,336 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction
+2026-04-08 20:17:37,337 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-08 20:17:37,337 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 20:17:37,337 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 20:17:37,342 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-08 20:17:37,344 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-08 20:17:37,344 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:31:01,558 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:31:01,559 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:31:01,594 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:31:01,594 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:31:01,597 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:31:01,597 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:31:01,597 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:31:01,598 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:31:01,598 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:31:01,600 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:31:01,600 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:31:03,311 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:31:03,312 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:31:03,312 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:31:03,313 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:31:03,313 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:31:03,314 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:31:03,314 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:31:03,315 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:31:03,315 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:31:03,315 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:31:03,316 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:31:03,316 [ERROR] MalwareAnalyzer: [-] Analysis failed: sequence item 0: expected str instance, list found
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 186, in analyze
+    merged_report = self.correlation_engine.correlate(merged_report)
+  File "D:\NFSU (CSE)\S-O-A-R\correlator\correlation_engine.py", line 54, in correlate
+    self._perform_yara_scanning(merged_report)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\NFSU (CSE)\S-O-A-R\correlator\correlation_engine.py", line 108, in _perform_yara_scanning
+    all_detections = ' '.join(report.all_detections.get(src, []) for src in report.all_detections)
+TypeError: sequence item 0: expected str instance, list found
+2026-04-08 23:31:03,319 [ERROR] __main__: Fatal error: sequence item 0: expected str instance, list found
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 378, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 186, in analyze
+    merged_report = self.correlation_engine.correlate(merged_report)
+  File "D:\NFSU (CSE)\S-O-A-R\correlator\correlation_engine.py", line 54, in correlate
+    self._perform_yara_scanning(merged_report)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\NFSU (CSE)\S-O-A-R\correlator\correlation_engine.py", line 108, in _perform_yara_scanning
+    all_detections = ' '.join(report.all_detections.get(src, []) for src in report.all_detections)
+TypeError: sequence item 0: expected str instance, list found
+2026-04-08 23:31:40,622 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:31:40,623 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:31:40,648 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:31:40,649 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:31:40,649 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:31:40,649 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:31:40,649 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:31:40,649 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:31:40,649 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:31:40,651 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:31:40,651 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:31:42,087 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:31:42,087 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:31:42,087 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:31:42,088 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:31:42,088 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:31:42,088 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:31:42,088 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:31:42,088 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:31:42,089 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:31:42,089 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:31:42,089 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:31:42,089 [ERROR] MalwareAnalyzer: [-] Analysis failed: sequence item 0: expected str instance, list found
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 186, in analyze
+    merged_report = self.correlation_engine.correlate(merged_report)
+  File "D:\NFSU (CSE)\S-O-A-R\correlator\correlation_engine.py", line 54, in correlate
+    self._perform_yara_scanning(merged_report)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\NFSU (CSE)\S-O-A-R\correlator\correlation_engine.py", line 108, in _perform_yara_scanning
+    all_detections = ' '.join(report.all_detections.get(src, []) for src in report.all_detections)
+TypeError: sequence item 0: expected str instance, list found
+2026-04-08 23:31:42,091 [ERROR] __main__: Fatal error: sequence item 0: expected str instance, list found
+Traceback (most recent call last):
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 378, in main
+    results = analyzer.analyze(args.file, args.output_dir)
+  File "D:\NFSU (CSE)\S-O-A-R\analyzer.py", line 186, in analyze
+    merged_report = self.correlation_engine.correlate(merged_report)
+  File "D:\NFSU (CSE)\S-O-A-R\correlator\correlation_engine.py", line 54, in correlate
+    self._perform_yara_scanning(merged_report)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\NFSU (CSE)\S-O-A-R\correlator\correlation_engine.py", line 108, in _perform_yara_scanning
+    all_detections = ' '.join(report.all_detections.get(src, []) for src in report.all_detections)
+TypeError: sequence item 0: expected str instance, list found
+2026-04-08 23:32:24,499 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:32:24,499 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:32:24,529 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:32:24,530 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:32:24,530 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:32:24,530 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:32:24,530 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:32:24,530 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:32:24,530 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:32:24,532 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:32:24,532 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:32:26,432 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:32:26,432 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:32:26,432 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:32:26,433 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:32:26,433 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:32:26,433 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:32:26,433 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:32:26,433 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:32:26,434 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:32:26,434 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:32:26,434 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:32:26,437 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-08 23:32:26,437 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:32:26,437 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:32:26,441 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-08 23:32:26,444 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-08 23:32:26,444 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:32:43,747 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:32:43,748 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:32:43,779 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:32:43,780 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:32:43,780 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:32:43,781 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:32:43,781 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:32:43,781 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:32:43,781 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:32:43,783 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:32:43,783 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:32:45,950 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:32:45,951 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:32:45,952 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:32:45,952 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:32:45,953 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:32:45,953 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:32:45,954 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:32:45,954 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:32:45,954 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:32:45,955 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:32:45,955 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:32:45,956 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-08 23:32:45,956 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:32:45,957 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:32:45,959 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-08 23:32:45,961 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-08 23:32:45,961 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:35:51,517 [ERROR] YARAScanner: Failed to compile YARA rules: yara_rules\sample_rules.yar(13): invalid regular expression "$ip": syntax error
+2026-04-08 23:35:51,518 [INFO] correlator.correlation_engine: YARA rules not configured, YARA scanning disabled
+2026-04-08 23:35:51,565 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:35:51,578 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:35:51,579 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:35:51,580 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:35:51,580 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:35:51,580 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:35:51,580 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:35:51,614 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:35:51,626 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:35:53,286 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:35:53,286 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:35:53,286 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:35:53,286 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:35:53,287 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:35:53,287 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:35:53,287 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:35:53,287 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:35:53,287 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:35:53,287 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:35:53,288 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:35:53,288 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-08 23:35:53,288 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:35:53,288 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:35:53,291 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-08 23:35:53,293 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-08 23:35:53,293 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:37:10,740 [ERROR] YARAScanner: Failed to compile YARA rules: yara_rules\sample_rules.yar(13): invalid regular expression "$ip": syntax error
+2026-04-08 23:37:10,741 [INFO] correlator.correlation_engine: YARA rules not configured, YARA scanning disabled
+2026-04-08 23:37:10,769 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:37:10,769 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:37:10,770 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:37:10,770 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:37:10,770 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:37:10,770 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:37:10,770 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:37:10,771 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:37:10,772 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:37:12,473 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:37:12,473 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:37:12,474 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:37:12,474 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:37:12,474 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:37:12,475 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:37:12,475 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:37:12,476 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:37:12,476 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:37:12,476 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:37:12,476 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:37:12,476 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-08 23:37:12,477 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:37:12,477 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:37:12,481 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-08 23:37:12,483 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-08 23:37:12,484 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:37:26,011 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:37:26,012 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:37:26,042 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:37:26,043 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:37:26,043 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:37:26,043 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:37:26,043 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:37:26,043 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:37:26,043 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:37:26,045 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:37:26,046 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:37:27,353 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:37:27,353 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:37:27,354 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:37:27,354 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:37:27,354 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:37:27,354 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:37:27,354 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:37:27,354 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:37:27,354 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:37:27,354 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:37:27,354 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:37:27,356 [INFO] YARAScanner: Found 1 YARA matches in samples/hack1.exe
+2026-04-08 23:37:27,357 [ERROR] correlator.correlation_engine: Error during YARA scanning: cannot unpack non-iterable yara.StringMatchInstance object
+2026-04-08 23:37:27,357 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-08 23:37:27,357 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:37:27,357 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:37:27,358 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-08 23:37:27,359 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-08 23:37:27,359 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:37:49,130 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:37:49,130 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:37:49,156 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:37:49,157 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:37:49,157 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:37:49,157 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:37:49,157 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:37:49,158 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:37:49,158 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:37:49,159 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:37:49,159 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:37:51,315 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:37:51,315 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:37:51,315 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:37:51,315 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:37:51,316 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:37:51,316 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:37:51,316 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:37:51,316 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:37:51,317 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:37:51,317 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:37:51,317 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:37:51,318 [ERROR] correlator.correlation_engine: Error during YARA scanning: 'yara.StringMatchInstance' object has no attribute 'matched_string'
+2026-04-08 23:37:51,318 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-08 23:37:51,318 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:37:51,319 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:37:51,320 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-08 23:37:51,321 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-08 23:37:51,321 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:38:25,394 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:38:25,394 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:38:25,421 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:38:25,421 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:38:25,421 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:38:25,421 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:38:25,421 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:38:25,422 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:38:25,422 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:38:25,423 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:38:25,423 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:38:27,342 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:38:27,343 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:38:27,343 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:38:27,343 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:38:27,343 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:38:27,344 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:38:27,344 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:38:27,344 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:38:27,344 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:38:27,344 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:38:27,344 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:38:27,346 [INFO] YARAScanner: Found 1 YARA matches in samples/hack1.exe
+2026-04-08 23:38:27,347 [ERROR] correlator.correlation_engine: Error during YARA scanning: cannot unpack non-iterable yara.StringMatchInstance object
+2026-04-08 23:38:27,347 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-08 23:38:27,347 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:38:27,347 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:38:27,351 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-08 23:38:27,353 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-08 23:38:27,353 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:39:21,836 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:39:21,836 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:39:21,863 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:39:21,863 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hack1.exe
+2026-04-08 23:39:21,864 [INFO] MalwareAnalyzer:   SHA256: 7cc291aa99a0e28c83c3c6e9e6589184f56c450c1dd66f3cbe71f0a60e4d3262
+2026-04-08 23:39:21,864 [INFO] MalwareAnalyzer:   Size: 42220 bytes
+2026-04-08 23:39:21,864 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:39:21,864 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:39:21,864 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:39:21,865 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:39:21,866 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:39:23,234 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:39:23,234 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:39:23,235 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:39:23,235 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:39:23,235 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:39:23,235 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:39:23,235 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:39:23,236 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:39:23,236 [INFO] MalwareAnalyzer:   [+] Risk score: 59.8/10
+2026-04-08 23:39:23,236 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:39:23,236 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:39:23,237 [INFO] YARAScanner: Found 1 YARA matches in samples/hack1.exe
+2026-04-08 23:39:23,238 [INFO] correlator.correlation_engine: YARA scanning extracted 6 additional IOCs
+2026-04-08 23:39:23,238 [INFO] correlator.correlation_engine: Correlation complete: 6 IOCs, 0 MITRE techniques
+2026-04-08 23:39:23,238 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:39:23,239 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:39:23,241 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hack1_report.html
+2026-04-08 23:39:23,242 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hack1_report.json
+2026-04-08 23:39:23,242 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:40:59,585 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:40:59,585 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:40:59,616 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:40:59,616 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-08 23:40:59,618 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-08 23:40:59,618 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-08 23:40:59,618 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:40:59,618 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:40:59,618 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:40:59,620 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:40:59,621 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:41:00,781 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:41:00,781 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:41:00,781 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:41:00,781 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:41:00,781 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:41:00,781 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:41:00,781 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:41:00,781 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:41:00,781 [INFO] MalwareAnalyzer:   [+] Risk score: 63.4/10
+2026-04-08 23:41:00,781 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:41:00,781 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:41:00,782 [INFO] YARAScanner: Found 1 YARA matches in samples/reverse_shell.exe
+2026-04-08 23:41:00,783 [INFO] correlator.correlation_engine: YARA scanning extracted 8 additional IOCs
+2026-04-08 23:41:00,783 [INFO] correlator.correlation_engine: Correlation complete: 8 IOCs, 0 MITRE techniques
+2026-04-08 23:41:00,783 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:41:00,783 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:41:00,784 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\reverse_shell_report.html
+2026-04-08 23:41:00,785 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\reverse_shell_report.json
+2026-04-08 23:41:00,785 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:41:52,540 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:41:52,540 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:41:52,569 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:41:52,569 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/reverse_shell.exe
+2026-04-08 23:41:52,571 [INFO] MalwareAnalyzer:   SHA256: e7dea3de7e8ca278175fbea753cd56f8c76661909df630f9ee08c8c7b1a51878
+2026-04-08 23:41:52,571 [INFO] MalwareAnalyzer:   Size: 40850 bytes
+2026-04-08 23:41:52,571 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:41:52,572 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:41:52,572 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:41:52,573 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:41:52,573 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:41:53,912 [INFO] MalwareAnalyzer:   [+] Received reports from 2 sandbox(es)
+2026-04-08 23:41:53,912 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:41:53,913 [INFO] MalwareAnalyzer:   [+] HA normalized
+2026-04-08 23:41:53,913 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:41:53,914 [INFO] MalwareAnalyzer:   [+] Normalized 2 report(s)
+2026-04-08 23:41:53,914 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:41:53,914 [INFO] merger: Merged 2 reports: 0 IOCs, 0 network activities
+2026-04-08 23:41:53,914 [INFO] MalwareAnalyzer:   [+] Consensus verdict: malicious
+2026-04-08 23:41:53,915 [INFO] MalwareAnalyzer:   [+] Risk score: 63.4/10
+2026-04-08 23:41:53,915 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:41:53,915 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:41:53,917 [INFO] YARAScanner: Found 1 YARA matches in samples/reverse_shell.exe
+2026-04-08 23:41:53,919 [INFO] correlator.correlation_engine: YARA scanning extracted 8 additional IOCs
+2026-04-08 23:41:53,919 [INFO] correlator.correlation_engine: Correlation complete: 8 IOCs, 0 MITRE techniques
+2026-04-08 23:41:53,919 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:41:53,919 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:41:53,922 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\reverse_shell_report.html
+2026-04-08 23:41:53,923 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\reverse_shell_report.json
+2026-04-08 23:41:53,923 [INFO] MalwareAnalyzer: [+] Analysis complete!
+2026-04-08 23:43:23,251 [INFO] YARAScanner: Loaded 1 YARA rules from yara_rules
+2026-04-08 23:43:23,252 [INFO] correlator.correlation_engine: YARA scanner initialized successfully
+2026-04-08 23:43:23,286 [INFO] MalwareAnalyzer: MalwareAnalyzer initialized successfully
+2026-04-08 23:43:23,286 [INFO] MalwareAnalyzer: [1/7] Validating file: samples/hello.c
+2026-04-08 23:43:23,287 [INFO] MalwareAnalyzer:   SHA256: 6ce63f7e50f3fd5e2f321d7033e340cdf80b5c8603526bd3cf8377024a629164
+2026-04-08 23:43:23,287 [INFO] MalwareAnalyzer:   Size: 81 bytes
+2026-04-08 23:43:23,287 [INFO] MalwareAnalyzer: [2/7] Running sandbox guard checks
+2026-04-08 23:43:23,288 [INFO] MalwareAnalyzer:   [+] File passed safety checks
+2026-04-08 23:43:23,288 [INFO] MalwareAnalyzer: [3/7] Submitting to sandboxes in parallel
+2026-04-08 23:43:23,290 [INFO] MalwareAnalyzer:   Submitting to Hybrid Analysis...
+2026-04-08 23:43:23,291 [INFO] MalwareAnalyzer:   Submitting to VirusTotal...
+2026-04-08 23:43:39,960 [ERROR] clients.hybrid_analysis: Hybrid Analysis submission failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/quick-scan/file
+2026-04-08 23:43:39,960 [WARNING] MalwareAnalyzer:     [!] Hybrid Analysis failed: 400 Client Error: Bad Request for url: https://hybrid-analysis.com/api/v2/quick-scan/file
+2026-04-08 23:43:39,963 [INFO] MalwareAnalyzer:   [+] Received reports from 1 sandbox(es)
+2026-04-08 23:43:39,964 [INFO] MalwareAnalyzer: [4/7] Normalizing sandbox reports
+2026-04-08 23:43:39,965 [INFO] MalwareAnalyzer:   [+] VT normalized
+2026-04-08 23:43:39,965 [INFO] MalwareAnalyzer:   [+] Normalized 1 report(s)
+2026-04-08 23:43:39,965 [INFO] MalwareAnalyzer: [5/7] Merging multi-source reports
+2026-04-08 23:43:39,966 [INFO] merger: Merged 1 reports: 0 IOCs, 0 network activities
+2026-04-08 23:43:39,967 [INFO] MalwareAnalyzer:   [+] Consensus verdict: clean
+2026-04-08 23:43:39,967 [INFO] MalwareAnalyzer:   [+] Risk score: 5.0/10
+2026-04-08 23:43:39,967 [INFO] MalwareAnalyzer: [6/7] Correlating behaviors to MITRE ATT&CK
+2026-04-08 23:43:39,968 [INFO] correlator.correlation_engine: Starting correlation analysis with behavioral IOC extraction and YARA scanning
+2026-04-08 23:43:39,969 [INFO] correlator.correlation_engine: Correlation complete: 0 IOCs, 0 MITRE techniques
+2026-04-08 23:43:39,972 [INFO] MalwareAnalyzer:   [+] Mapped to 0 MITRE technique(s)
+2026-04-08 23:43:39,972 [INFO] MalwareAnalyzer: [7/7] Generating final reports
+2026-04-08 23:43:39,975 [INFO] MalwareAnalyzer:   [+] HTML report: artifacts\hello_report.html
+2026-04-08 23:43:39,976 [INFO] MalwareAnalyzer:   [+] JSON report: artifacts\hello_report.json
+2026-04-08 23:43:39,977 [INFO] MalwareAnalyzer: [+] Analysis complete!

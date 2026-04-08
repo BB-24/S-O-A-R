@@ -29,7 +29,6 @@ class IOCType(str, Enum):
 class IOCSource(str, Enum):
     """IOC data sources."""
     SANDBOX = "sandbox"
-    MISP = "misp"
     BEHAVIORAL = "behavioral"
 
 
@@ -58,13 +57,6 @@ class IOC:
     last_seen: Optional[datetime] = None
     confidence: float = 0.0  # 0.0 to 1.0
     metadata: Dict[str, Any] = field(default_factory=dict)
-    
-    # MISP enrichment
-    misp_events: List[int] = field(default_factory=list)  # MISP event IDs
-    misp_tags: List[str] = field(default_factory=list)  # Tags from MISP
-    misp_threat_level: Optional[str] = None  # From MISP (high, medium, low)
-    is_known_malicious: bool = False  # Per MISP
-    misp_last_checked: Optional[datetime] = None
     
     # Behavioral context
     process_name: Optional[str] = None  # For registry/file/process IOCs
@@ -235,6 +227,7 @@ class MergedReport:
     
     # Metadata
     metadata: Dict[str, Any] = field(default_factory=dict)
+    raw_metadata: Dict[str, Any] = field(default_factory=dict)
 
     def summary(self) -> Dict[str, Any]:
         """Generate summary for quick viewing."""
